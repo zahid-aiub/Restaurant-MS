@@ -1,3 +1,3 @@
-# Basic Spring
-
-This is class based basic spring project. 
+# Zero XML Spring & Hibernate
+This is `Class Based` basic spring project 
+Implemented with `Repository` pattarn
