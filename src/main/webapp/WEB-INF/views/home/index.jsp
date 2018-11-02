@@ -13,7 +13,8 @@
 <body>
     <h1>Hello World ${name}</h1>
     <a href="populate_users">Populate Users</a><br>
-    <a href="/api/home/get_all_users">View Users</a><br>
+    <a href="/api/home/user/all">View Users</a><br>
+    <a href="geo">Find Nearby</a><br>
 <h2>${msg}</h2>
 </body>
 </html>

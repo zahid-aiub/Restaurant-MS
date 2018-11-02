@@ -24,6 +24,13 @@ public class HomeController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/geo")
+    public ModelAndView locView(){
+        ModelAndView modelAndView = new ModelAndView("home/geo_view");
+        modelAndView.addObject("name", "Spring");
+        return modelAndView;
+    }
+
 
     @RequestMapping(value = "/populate_users")
     public ModelAndView insertDummyData(){

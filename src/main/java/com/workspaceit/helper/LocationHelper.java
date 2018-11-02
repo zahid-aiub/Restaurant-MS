@@ -10,9 +10,11 @@ public class LocationHelper {
 
     private static Float METERS_IN_DEGREES = 111300f;
 
-    public static GeoLocation getNearbyLocation(GeoLocation location, int radius){
+    public static GeoLocation getNearbyLocation(GeoLocation location, Integer radius){
+        if(location==null || radius==null){
+            return null;
+        }
         Random random = new Random();
-
         // Convert radius from meters to degrees
         double radiusInDegrees = radius / METERS_IN_DEGREES;
 
@@ -35,12 +37,5 @@ public class LocationHelper {
         System.out.println(foundLatitude + "," + foundLongitude);
         return new GeoLocation(foundLatitude,foundLongitude);
     }
-
-
-//    public static void main(String[] args) {
-//        double lat = 23.834546871344585; //x0 23.834546871344585,90.41632905520055
-//        double lon = 90.41632905520055; //y0
-//        GeoLocation geoLocation =  test(new GeoLocation(lat,lon),1);
-//    }
 
 }
