@@ -20,7 +20,7 @@ public class HomeController {
     @RequestMapping(value = "/")
     public ModelAndView home() {
         ModelAndView modelAndView = new ModelAndView("home/index");
-        modelAndView.addObject("name", "WSIT");
+        modelAndView.addObject("name", "Spring");
         return modelAndView;
     }
 
