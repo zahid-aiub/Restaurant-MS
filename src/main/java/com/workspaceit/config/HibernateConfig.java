@@ -1,8 +1,9 @@
 package com.workspaceit.config;
 
 
-import com.workspaceit.entity.User;
+import com.workspaceit.dao.BaseDao;
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -29,10 +30,12 @@ public class HibernateConfig {
     @Autowired
     private Environment env;
 
+
+
     @Bean
     public DataSource getDataSource() {
         BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setDriverClassName(env.getProperty("db.driver"));
+        dataSource.setDriverClassName(env.getProperty("jdbc.driver.class"));
         dataSource.setUrl(env.getProperty("db.url"));
         dataSource.setUsername(env.getProperty("db.username"));
         dataSource.setPassword(env.getProperty("db.password"));

@@ -11,6 +11,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @EnableWebMvc
 @ComponentScan("com.workspaceit")
+//@ComponentScan({ "com.workspaceit.*" })
 
 public class WebConfig implements WebMvcConfigurer {
 

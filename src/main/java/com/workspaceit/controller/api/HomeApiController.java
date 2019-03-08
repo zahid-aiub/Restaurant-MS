@@ -1,7 +1,6 @@
 package com.workspaceit.controller.api;
 
 import com.workspaceit.contents.URLPrefix;
-import com.workspaceit.entity.User;
 import com.workspaceit.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,7 +19,7 @@ import java.util.List;
 @RequestMapping(value = URLPrefix.API+"/home")
 public class HomeApiController {
 
-    @Autowired
+    /*@Autowired
     UserService userService;
 
     @RequestMapping("/user/all")
@@ -33,5 +32,5 @@ public class HomeApiController {
     public Object getUserByEmai(@PathVariable String email){
         List<User> userList = userService.getAllUsers();
         return userList;
-    }
+    }*/
 }
