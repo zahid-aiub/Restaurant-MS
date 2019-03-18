@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-<div id="loginModal" class="modal fade" role="dialog">
+<div id="loginModal" class="modal" role="dialog">
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -179,8 +179,9 @@
 </script>
 
 
+<%--
 
-<div id="userPermissionModal" class="modal fade" role="dialog">
+<div id="userPermissionModal" class="modal" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
@@ -204,5 +205,6 @@
     </div>
 </div>
 
+--%>
 
 
