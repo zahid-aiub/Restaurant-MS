@@ -5,6 +5,11 @@ public class ApiStatus {
     private String message;
     private Object data;
 
+    public ApiStatus(Integer status, String messege) {
+        this.status = status;
+        this.message = messege;
+    }
+
     public ApiStatus(Integer status, String message, Object data) {
         this.status = status;
         this.message = message;

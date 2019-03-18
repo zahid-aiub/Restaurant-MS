@@ -1,0 +1,38 @@
+
+/*
+footer {
+    position: fixed;
+    height: 50px;
+    bottom: 0;
+    width: 100%;
+}
+*/
+
+#sliderDiv {
+    width: 80%;
+    height: 60%;
+}
+
+#imgsize {
+    height: auto;
+    width: auto;
+}
+
+#cardDiv {
+    margin-top: 0px;
+    align-content: center;
+}
+
+#main-body {
+    background-image: url("/resources/images/burger/house/burger_house1.jpg");
+}
+
+#dataTableImg {
+    height: 150px;
+    width: 200px;
+}
+
+#detailViewImg {
+    height: 400px;
+    width: 200px;
+}
