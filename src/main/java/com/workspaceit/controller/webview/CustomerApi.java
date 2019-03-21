@@ -4,6 +4,7 @@ import com.workspaceit.contents.URLPrefix;
 import com.workspaceit.entity.Customer;
 import com.workspaceit.pojo.wraper.ApiStatus;
 import com.workspaceit.service.CustomerService;
+import org.apache.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,18 +51,21 @@ public class CustomerApi {
     }
 
     @RequestMapping(value = "/loginProcess")
-    public ApiStatus userLoginProcess(@RequestParam(value = "uname") String username, @RequestParam(value = "pass") String password) {
+    public ApiStatus userLoginProcess(@RequestParam(value = "uname") String username, @RequestParam(value = "pass") String password, HttpServletRequest request) {
 
         System.out.println("login process...");
         if (!username.equals("") && !password.equals("")) {
-            if (this.customerService.checkLogin(username, password)) {
-
+            Boolean loginSuccess = this.customerService.checkLogin(username, password);
+            if (loginSuccess) {
+                /*HttpSession session = request.getSession();
                 session.setAttribute(username, "uname");
                 session.setAttribute(password, "upass");
-
+*/
                 System.out.println("Login successful...!!");
+                return new ApiStatus(200,"successfull",null);
             } else {
                 System.out.println("Failed to login");
+                return new ApiStatus(401,"Failed",null);
 
             }
         }

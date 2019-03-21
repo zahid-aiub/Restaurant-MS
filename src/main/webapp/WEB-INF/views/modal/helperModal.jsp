@@ -41,7 +41,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <a href="#" class="btn btn-success" id="loginBtn"><span class="glyphicon glyphicon-shopping-cart"></span>Confirm</a>
+                <button class="btn btn-success" id="loginBtn">Confirm</button>
                 <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
             </div>
 

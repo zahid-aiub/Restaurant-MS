@@ -20,25 +20,32 @@ $( document ).ready(function() {
         var username = $('#phoneNumb').val();
         var password = $('#pass').val();
 
-        $.ajax({
-            method: 'POST',
-            url: BASEURL + "user/loginProcess",
-            data: {
-                uname : username,
-                pass : password
-            },
+        if (!username=="" && !password==""){
+            console.log(BASEURL);
+            $.ajax({
+                method: 'POST',
+                url: BASEURL + "/user/loginProcess",
+                data: {
+                    uname : username,
+                    pass : password
+                },
 
-            success: function (response) {
-                if(response.status == 200){
+                success: function (response) {
+                    if(response.status == 200){
 
-                    $("#loginModal").modal("hide");
-                    // $.growl.warning({message: "You have successfully registried!"});
+                        $("#loginModal").modal("hide");
+                        // $.growl.warning({message: "You have successfully registried!"});
+                    }
+                },
+                error: function (response) {
+                    console.log("error");
                 }
-            },
-            error: function (response) {
-               console.log("error");
-            }
-        });
+            });
+
+        }
+        else {
+            alert("Please fill up all section.")
+        }
 
     });
 

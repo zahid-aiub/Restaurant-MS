@@ -46,8 +46,8 @@
 			</form>
 
 			<ul class="nav navbar-nav navbar-right">
-				<li><a id="signInBtn" href="#">Sign In</a></li>
-				<li><a id="offer" href="#">Offer</a></li>
+				<li><a id="signInBtn" >Sign In</a></li>
+				<li><a id="offer" >Offer</a></li>
 				<li class="dropdown">
 					<a id="profile" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile<span class="caret"></span></a>
 					<ul class="dropdown-menu">
