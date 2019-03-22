@@ -7,15 +7,15 @@ import com.workspaceit.service.CustomerService;
 import org.apache.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping(value = "/user")
 public class CustomerApi {
 
@@ -50,19 +50,25 @@ public class CustomerApi {
         return new ApiStatus(200,"successfully registred", "");
     }
 
-    @RequestMapping(value = "/loginProcess")
+//    @ResponseBody
+    @RequestMapping(value = "/loginProcess",method = RequestMethod.POST)
     public ApiStatus userLoginProcess(@RequestParam(value = "uname") String username, @RequestParam(value = "pass") String password, HttpServletRequest request) {
 
         System.out.println("login process...");
         if (!username.equals("") && !password.equals("")) {
-            Boolean loginSuccess = this.customerService.checkLogin(username, password);
-            if (loginSuccess) {
+            List<Object> customer = this.customerService.checkLogin(username, password);
+            if (customer!=null) {
                 /*HttpSession session = request.getSession();
                 session.setAttribute(username, "uname");
                 session.setAttribute(password, "upass");
 */
                 System.out.println("Login successful...!!");
-                return new ApiStatus(200,"successfull",null);
+                try{
+                    return new ApiStatus(200,"successfull",null);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+//                return (ApiStatus) new Object();
             } else {
                 System.out.println("Failed to login");
                 return new ApiStatus(401,"Failed",null);

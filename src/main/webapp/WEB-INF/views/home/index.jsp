@@ -17,7 +17,8 @@
         window.contextRoot = '${contextRoot}'
     </script>
     <script type="text/javascript">
-        var BASEURL = "<c:url value="/" />";
+        <%--var BASEURL = "<c:url value="/" />";--%>
+        var BASEURL = '${pageContext.request.contextPath}';
     </script>
 <%--    <script src='<c:url value="/WEB-INF/resources/jQuery/jQuery-2.1.4.min.js"/>'></script>--%>
 

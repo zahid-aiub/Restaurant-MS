@@ -24,26 +24,26 @@ public class CustomerDao extends BaseDao {
     }
 
 
-    public Boolean checkLogin(String uname, String pass) {
+    public List<Object> checkLogin(String uname, String pass) {
 
         try {
             String hql = "select id from Customer WHERE phone=:phone and password=:pass";
             Session session = this.getCurrentHibernateSession();
             System.out.println("In try block");
-            Integer res = (Integer) session.createQuery(hql).setParameter("phone", uname).setParameter("pass", pass).uniqueResult();
+            return session.createQuery(hql).setParameter("phone", uname).setParameter("pass", pass).list();
 
-            if(res>-1){
+            /*if(res>-1){
                 System.out.println("Result: "+res);
                 return true;
             }
             else {
                 return false;
-            }
+            }*/
         }
 
         catch (Exception e){
             e.printStackTrace();
-            return false;
+            return null;
         }
 
     }

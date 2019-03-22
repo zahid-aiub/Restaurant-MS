@@ -33,6 +33,7 @@ $( document ).ready(function() {
                 success: function (response) {
                     if(response.status == 200){
 
+                        console.log("its work...!!");
                         $("#loginModal").modal("hide");
                         // $.growl.warning({message: "You have successfully registried!"});
                     }
