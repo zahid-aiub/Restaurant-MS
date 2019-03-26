@@ -1,19 +1,16 @@
 package com.workspaceit.controller.webview;
 
-import com.workspaceit.contents.URLPrefix;
 import com.workspaceit.entity.Customer;
 import com.workspaceit.pojo.wraper.ApiStatus;
 import com.workspaceit.service.CustomerService;
-import org.apache.http.HttpStatus;
+import org.apache.http.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @RestController
 @RequestMapping(value = "/user")
@@ -51,32 +48,31 @@ public class CustomerApi {
     }
 
 //    @ResponseBody
-    @RequestMapping(value = "/loginProcess",method = RequestMethod.POST)
-    public ApiStatus userLoginProcess(@RequestParam(value = "uname") String username, @RequestParam(value = "pass") String password, HttpServletRequest request) {
+    @RequestMapping(value = "/loginProcess")
+    public ApiStatus userLoginProcess(HttpServletRequest request,@RequestParam(value = "uname") String username,
+                                 @RequestParam(value = "pass") String password
+                                 )
+    {
+        /*String username = request.getParameter("phoneNumb");
+        String password = request.getParameter("pass");*/
 
-        System.out.println("login process...");
+        System.out.println("login process..."+username+password);
         if (!username.equals("") && !password.equals("")) {
-            List<Object> customer = this.customerService.checkLogin(username, password);
+            Object customer = this.customerService.checkLogin(username, password);
             if (customer!=null) {
-                /*HttpSession session = request.getSession();
-                session.setAttribute(username, "uname");
-                session.setAttribute(password, "upass");
-*/
-                System.out.println("Login successful...!!");
-                try{
-                    return new ApiStatus(200,"successfull",null);
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-//                return (ApiStatus) new Object();
+                HttpSession session = request.getSession();
+                session.setAttribute("uname", username);
+
+                System.out.println("login successfull");
+                return new ApiStatus(200,"successfull", customer);
+
             } else {
                 System.out.println("Failed to login");
-                return new ApiStatus(401,"Failed",null);
-
+                return new ApiStatus(400,"successfull");
             }
         }
 
-        return new ApiStatus(200,"jhugfytgfhj");
+        return null;
     }
 
 }

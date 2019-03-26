@@ -68,6 +68,11 @@
 </head>
 <body>
 
+<%--<%
+    if (session.getAttribute("name") ==null)
+        response.sendRedirect("redirect.jsp");
+%>--%>
+
 <div class="wrapper">
 
     <%@include file="/WEB-INF/views/shared/navbar.jsp"%>

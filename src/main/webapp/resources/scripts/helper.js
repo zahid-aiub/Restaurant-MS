@@ -2,6 +2,8 @@
 $( document ).ready(function() {
     console.log( "ready!" );
 
+    var customer;
+
     $("#signInBtn").click(function () {
         console.log("okkkk...!!!");
         $("#loginModal").modal("show");
@@ -34,7 +36,10 @@ $( document ).ready(function() {
                     if(response.status == 200){
 
                         console.log("its work...!!");
+                        customer = response.data;
+                        $('#signInBtn').text(customer.name);
                         $("#loginModal").modal("hide");
+                        console.log(customer.name);
                         // $.growl.warning({message: "You have successfully registried!"});
                     }
                 },
@@ -180,6 +185,9 @@ $( document ).ready(function() {
         var foodTypeId = $('#foodTypeId').text();
         var quantity = $('#qtyInput').val();
         var totalPrice = $('#totalPrice').text();
+        var customerId = customer.id;
+
+        console.log("C_id: "+ customerId);
 
         $.ajax({
 
