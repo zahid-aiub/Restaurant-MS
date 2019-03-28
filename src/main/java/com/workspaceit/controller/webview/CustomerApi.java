@@ -58,10 +58,14 @@ public class CustomerApi {
 
         System.out.println("login process..."+username+password);
         if (!username.equals("") && !password.equals("")) {
-            Object customer = this.customerService.checkLogin(username, password);
+            Customer customer = this.customerService.checkLogin(username, password);
             if (customer!=null) {
+                int id = customer.getId();
+                String name = customer.getName();
+                System.out.println(id+ " --- "+ name);
+
                 HttpSession session = request.getSession();
-                session.setAttribute("uname", username);
+                session.setAttribute("user", customer);
 
                 System.out.println("login successfull");
                 return new ApiStatus(200,"successfull", customer);

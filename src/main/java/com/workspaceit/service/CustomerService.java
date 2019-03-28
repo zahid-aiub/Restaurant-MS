@@ -20,7 +20,7 @@ public class CustomerService extends BaseDao {
         return this.customerDao.add(customer);
     }
 
-    public Object checkLogin(String uname, String pass){
+    public Customer checkLogin(String uname, String pass){
 
         return this.customerDao.checkLogin(uname, pass);
     }

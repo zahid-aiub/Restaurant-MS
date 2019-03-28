@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+
 @Controller
 public class PageControllerApi {
 
@@ -99,4 +104,18 @@ public class PageControllerApi {
 
         return mv;
     }*/
+
+    @RequestMapping(value = "/logout")
+    public void signOut (HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
+        if (session != null){
+            session.invalidate();
+        }
+        try {
+            response.sendRedirect("http://localhost:8082/");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

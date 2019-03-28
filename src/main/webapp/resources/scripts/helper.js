@@ -2,8 +2,6 @@
 $( document ).ready(function() {
     console.log( "ready!" );
 
-    var customer;
-
     $("#signInBtn").click(function () {
         console.log("okkkk...!!!");
         $("#loginModal").modal("show");
@@ -15,7 +13,8 @@ $( document ).ready(function() {
     });
 
     $("#offer").click(function () {
-        $("#profile").hide();
+        //$("#profile").hide();
+        console.log(id);
     });
 
     $("#loginBtn").click(function () {
@@ -36,10 +35,7 @@ $( document ).ready(function() {
                     if(response.status == 200){
 
                         console.log("its work...!!");
-                        customer = response.data;
-                        $('#signInBtn').text(customer.name);
-                        $("#loginModal").modal("hide");
-                        console.log(customer.name);
+                        window.location.replace("http://localhost:8082/");
                         // $.growl.warning({message: "You have successfully registried!"});
                     }
                 },
@@ -89,6 +85,11 @@ $( document ).ready(function() {
             alert("Something wrong in your process. Please try again!");
         }
 
+    });
+
+    $('#logout').click(function () {
+        sessionStorage.removeItem('user');
+        console.log("logout");
     });
 
 

@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.workspaceit.entity.Customer" %><%--
   Created by IntelliJ IDEA.
   User: zahidul
   Date: 3/7/19
@@ -63,6 +63,7 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" href="<c:url value="/resources/css/index.css"/> ">
 <%--    <link rel="text/javascript" href="<c:url value="/resources/scripts/helper.js"/> ">--%>
 
 </head>
@@ -73,15 +74,47 @@
         response.sendRedirect("redirect.jsp");
 %>--%>
 
+<%
+    int id = 0;
+    String phone = "";
+    String name = "";
+    if (session.getAttribute("user") != null){
+        Customer session_val = (Customer) session.getAttribute("user");
+        id = session_val.getId();
+        name = session_val.getName();
+        phone = session_val.getPhone();
+    }
+
+%>
+
+
 <div class="wrapper">
 
     <%@include file="/WEB-INF/views/shared/navbar.jsp"%>
+
+    <script type="text/javascript">
+        var id = '<%=id%>';
+        var name= '<%=name%>';
+        console.log("Id: "+ id +"---"+"Login user: "+ name);
+
+        if (id !=0) {
+            $('#nameSpace').text("Welcome "+name);
+            $('#profile').show();
+            $('#signInBtn').hide();
+        }else {
+            $('#nameSpace').hide();
+            $('#signInBtn').show();
+            $('#profile').hide();
+        }
+
+
+    </script>
 
 
     <div id="main-body" class="content">
         <c:choose>
 
-            <c:when test="${userClickHome == true }">
+            <c:when test="${userClickHome == true || userClickLogout == true}">
                 <%@include file="/WEB-INF/views/home.jsp" %>
             </c:when>
 
