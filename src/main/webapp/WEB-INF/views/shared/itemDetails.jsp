@@ -31,7 +31,7 @@
 
             <div class="thumbnail">
                 
-                <img src="${foodItem.image}" class="img img-responsive" id="detailViewImg">
+                <img src="/resources/images/${foodItem.image}" class="img img-responsive" id="detailViewImg">
                 
             </div>
             

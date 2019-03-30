@@ -124,7 +124,7 @@ $( document ).ready(function() {
                 "sortable":false,
                 render: function (data, type, row, meta) {
                     if (data!= null){
-                        return '<img src="'+data+'" alt="Bugrer" class="img img-responsive" id="dataTableImg">';
+                        return '<img src="/resources/images/'+data+'" alt="Bugrer" class="img img-responsive" id="dataTableImg">';
                     }
                     return "N/A";
                 }
