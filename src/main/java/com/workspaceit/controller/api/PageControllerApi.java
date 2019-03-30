@@ -82,7 +82,7 @@ public class PageControllerApi {
         return mv;
     }
 
-    @RequestMapping(value = "/burger/{id}/single-item")
+    @RequestMapping(value = "/details/{id}/single-item")
     public ModelAndView getSingleItemDetails(@PathVariable int id) {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("home/index");

@@ -29,12 +29,12 @@ footer {
 
 #dataTableImg {
     height: 150px;
-    width: 200px;
+    width: 260px;
 }
 
 #detailViewImg {
     height: 400px;
-    width: 200px;
+    width: 350px;
 }
 
 #nameSpace {
@@ -58,5 +58,10 @@ footer {
     line-height: 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: #1aad1a;
+
+}
+
+#confirmCardImg {
+    height: 100px;
+    width: 200px;
 }

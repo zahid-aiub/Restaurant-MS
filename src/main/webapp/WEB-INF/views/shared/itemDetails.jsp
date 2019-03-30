@@ -15,7 +15,7 @@
             <ol class="breadcrumb">
 
                 <li><a href="${contextRoot}/">Home</a></li>
-                <li><a href="${contextRoot}/burger">Burger</a></li>
+                <li><a href="${contextRoot}/${foodItem.category.toLowerCase()}">${foodItem.category}</a></li>
                 <li class="active"><a href="#">${foodItem.typeName}</a></li>
 
             </ol>
@@ -31,7 +31,7 @@
 
             <div class="thumbnail">
                 
-                <img src="${foodItem.image}" class="img img-responsive" id="detailViewImg">
+                <img src="/resources/images/${foodItem.image}" class="img img-responsive" id="detailViewImg">
                 
             </div>
             

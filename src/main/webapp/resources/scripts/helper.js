@@ -92,6 +92,80 @@ $( document ).ready(function() {
         console.log("logout");
     });
 
+    //For Meat Meal
+
+    var meatMealTable = $("#meatMealDataTable").DataTable({
+
+        "processing": false,
+        "searching":true,
+        "scrollX": true,
+        "order": false,/*[[0, "desc"]]*/
+        "ajax": {
+            "url":BASEURL+ "meatMeal/meatMeal-item-list",
+            "type": "POST",
+            "dataSrc": ''
+        }
+        ,
+        "columns": [
+
+            {"data": "image"},
+            {"data": "typeName"},
+            {"data": "quantity"},
+            {"data": "price"},
+            {"data": "id"},
+            {"data": null}
+
+        ],
+        columnDefs: [
+            {
+                targets: 0,
+                "sortable":false,
+                render: function (data, type, row, meta) {
+                    if (data!= null){
+                        console.log(data);
+                        return '<img src="/resources/images/'+data+'" alt="MeatMeal" class="img img-responsive" id="dataTableImg">';
+                    }
+                    return "N/A";
+                }
+            },
+            {
+                targets: 2,
+                "sortable":false,
+                render: function (data, type, row, meta) {
+                    if (data!= null){
+                        return '<span class="badge badge-pill badge-light">'+data+'</span>';
+                    }
+                    return "N/A";
+                }
+            },
+            {
+                targets: [3],
+                render: function (data, type, row, meta) {
+                    if (data!= null){
+                        return '<span class="badge badge-secondary">'+data+' tk</span>';
+                    }
+                    else {
+                        return "N/A";
+                    }
+                }
+            },
+            {
+                targets: [4],
+                render: function (data, type, row, meta) {
+                    return '<a href="'+window.contextRoot+ '/details/'+data+'/single-item" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a> &#160'+
+                        '<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
+                }
+            },
+            {
+                targets: [5],
+                render: function (data, type, row, meta) {
+                    return '<a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span>'+' '+' Rating</a>';
+                }
+            },
+
+        ]
+    });
+
 
 
     //For burger item
@@ -124,7 +198,8 @@ $( document ).ready(function() {
                 "sortable":false,
                 render: function (data, type, row, meta) {
                     if (data!= null){
-                        return '<img src="'+data+'" alt="Bugrer" class="img img-responsive" id="dataTableImg">';
+                        console.log(data);
+                        return '<img src="/resources/images/'+data+'" alt="Bugrer" class="img img-responsive" id="dataTableImg">';
                     }
                     return "N/A";
                 }
@@ -153,7 +228,80 @@ $( document ).ready(function() {
             {
                 targets: [4],
                 render: function (data, type, row, meta) {
-                    return '<a href="'+window.contextRoot+ '/burger/'+data+'/single-item" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a> &#160'+
+                    return '<a href="'+window.contextRoot+ '/details/'+data+'/single-item" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a> &#160'+
+                        '<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
+                }
+            },
+            {
+                targets: [5],
+                render: function (data, type, row, meta) {
+                    return '<a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span>'+' '+' Rating</a>';
+                }
+            },
+
+        ]
+    });
+
+
+    var pizzaTable = $("#pizzaDataTable").DataTable({
+
+        "processing": false,
+        "searching":true,
+        "scrollX": true,
+        "order": false,/*[[0, "desc"]]*/
+        "ajax": {
+            "url":BASEURL+ "pizza/pizza-item-list",
+            "type": "POST",
+            "dataSrc": ''
+        }
+        ,
+        "columns": [
+
+            {"data": "image"},
+            {"data": "typeName"},
+            {"data": "quantity"},
+            {"data": "price"},
+            {"data": "id"},
+            {"data": null}
+
+        ],
+        columnDefs: [
+            {
+                targets: 0,
+                "sortable":false,
+                render: function (data, type, row, meta) {
+                    if (data!= null){
+                        console.log(data);
+                        return '<img src="/resources/images/'+data+'" alt="Bugrer" class="img img-responsive" id="dataTableImg">';
+                    }
+                    return "N/A";
+                }
+            },
+            {
+                targets: 2,
+                "sortable":false,
+                render: function (data, type, row, meta) {
+                    if (data!= null){
+                        return '<span class="badge badge-pill badge-light">'+data+'</span>';
+                    }
+                    return "N/A";
+                }
+            },
+            {
+                targets: [3],
+                render: function (data, type, row, meta) {
+                    if (data!= null){
+                        return '<span class="badge badge-secondary">'+data+' tk</span>';
+                    }
+                    else {
+                        return "N/A";
+                    }
+                }
+            },
+            {
+                targets: [4],
+                render: function (data, type, row, meta) {
+                    return '<a href="'+window.contextRoot+ '/details/'+data+'/single-item" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a> &#160'+
                         '<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
                 }
             },

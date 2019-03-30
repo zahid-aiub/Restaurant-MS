@@ -45,11 +45,5 @@
 </div>
 
 
-<script>
-    $("#burger").click(function () {
-        console.log("Hit burger");
-    });
-</script>
-
 
 

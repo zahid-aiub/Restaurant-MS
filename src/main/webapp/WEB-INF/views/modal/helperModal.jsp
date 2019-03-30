@@ -41,7 +41,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" id="loginBtn">Confirm</button>
+                <button class="btn btn-success" id="loginBtn">Login</button>
                 <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
             </div>
 
@@ -138,7 +138,7 @@
                     <tbody>
                     <tr>
                         <td id="foodTypeId">${foodItem.id}</td>
-                        <td><img src="${foodItem.image}" class="img img-responsive"></td>
+                        <td><img src="/resources/images/${foodItem.image}" class="img img-responsive" id="confirmCardImg"></td>
                         <td id="itemTypeName">${foodItem.typeName}</td>
                         <td><input id="qtyInput" type="number" min="1" value="1"></td>
                         <td id="itemPrice">${foodItem.price}</td>
