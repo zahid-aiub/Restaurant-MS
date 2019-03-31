@@ -65,7 +65,7 @@ $( document ).ready(function() {
             $("#registrationModal").modal("hide");
             $.ajax({
                 method: 'POST',
-                url: BASEURL + "user/registrationProcess",
+                url: "/user/registrationProcess",
                 data: {
                     name : name,
                     phone : phone,
@@ -325,7 +325,7 @@ $( document ).ready(function() {
     $("#addToCardBtn").click(function () {
         console.log("add to caRD");
         if(id == 0){
-            $('#loginModal').show();
+            $('#loginModal').modal('show');
         }
         else {
             $("#addToCardModal").modal('show');
@@ -343,11 +343,10 @@ $( document ).ready(function() {
         var customerId = id;
 
         console.log("C_id: "+ id+"---"+quantity+"------"+totalPrice+"----"+foodTypeId);
-        alert(BASEURL);
 
         $.ajax({
             method: 'POST',
-            url: "cart/confirm-add-to-cart",
+            url: "/cart/confirm-add-to-cart",
             data : {
                 userId : customerId,
                 foodId : foodTypeId,

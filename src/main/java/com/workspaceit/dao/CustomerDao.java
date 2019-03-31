@@ -16,7 +16,8 @@ public class CustomerDao extends BaseDao {
     public Customer add(Customer customer) {
         try {
             Session session = this.getCurrentHibernateSession();
-            return (Customer) session.save(customer);
+             session.save(customer);
+             return customer;
         } catch (Exception e) {
             e.printStackTrace();
             return null;

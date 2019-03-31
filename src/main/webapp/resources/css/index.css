@@ -84,3 +84,8 @@ footer {
 
 .toggle.ios, .toggle-on.ios, .toggle-off.ios { border-radius: 20px; }
 .toggle.ios .toggle-handle { border-radius: 20px; }
+
+.modal-backdrop {
+    background-color: rgba(0,0,0,.0001) !important;
+    opacity: inherit;
+}
