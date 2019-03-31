@@ -8,11 +8,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-@RequestMapping(value = "/card")
+@RequestMapping(value = "/cart")
 public class CardApi {
 
-    @RequestMapping(value = "/confirm-add-to-card")
-    public ApiStatus confirmAddToCard (HttpServletRequest request, @RequestParam("foodTypeId") int foodTypeId,
+    @RequestMapping(value = "/confirm-add-to-cart")
+    public ApiStatus confirmAddToCard (HttpServletRequest request,
+                                       @RequestParam("userId") int uid,
+                                       @RequestParam("foodId") int foodTypeId,
                                        @RequestParam("quantity") int quantity,
                                        @RequestParam("tprice") int totalPrice
                                        ) {
@@ -23,4 +25,16 @@ public class CardApi {
 
         return new ApiStatus(200, "successfully add to card", null);
     }
+
+    /*@RequestMapping(value = "/details/{id}/cart/confirm-add-to-cart")
+    public ApiStatus testConfirm(@RequestParam(value = "id") int id,
+                                 @RequestParam("foodId") int foodTypeId,
+                                @RequestParam("quantity") int quantity,
+                                @RequestParam("tprice") int totalPrice
+                                ) {
+
+        System.out.println(id+"----"+foodTypeId+"----"+ quantity+"----"+totalPrice);
+
+        return null;
+    }*/
 }

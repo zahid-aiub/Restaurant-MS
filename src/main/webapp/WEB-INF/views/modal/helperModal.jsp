@@ -41,7 +41,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" id="loginBtn">Login</button>
+                <button class="btn btn-outline-success" id="loginBtn">Login</button>
                 <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
             </div>
 
@@ -148,7 +148,7 @@
                 </table>
             </div>
             <div class="modal-footer">
-                <a href="#" class="btn btn-success" id="confirmBtn"><span class="glyphicon glyphicon-shopping-cart"></span>Confirm</a>
+                <a class="btn btn-success" id="confirmBtn"><span class="glyphicon glyphicon-shopping-cart"></span>Confirm</a>
                 <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
             </div>
 

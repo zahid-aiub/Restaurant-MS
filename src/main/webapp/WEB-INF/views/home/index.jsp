@@ -17,8 +17,10 @@
         window.contextRoot = '${contextRoot}'
     </script>
     <script type="text/javascript">
-        <%--var BASEURL = "<c:url value="/" />";--%>
+        var URL = "<c:url value='${window.location.href}'/>";
         var BASEURL = '${pageContext.request.contextPath}';
+        console.log(URL);
+        console.log(BASEURL);
     </script>
 <%--    <script src='<c:url value="/WEB-INF/resources/jQuery/jQuery-2.1.4.min.js"/>'></script>--%>
 
@@ -135,7 +137,7 @@
             </c:when>
 
             <c:when test="${userClickSnack == true }">
-                <%@include file="/WEB-INF/views/meatMeal.jsp" %>
+                <%@include file="/WEB-INF/views/snack.jsp" %>
             </c:when>
 
             <c:when test="${userClickDrink == true }">

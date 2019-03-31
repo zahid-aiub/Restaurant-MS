@@ -159,7 +159,7 @@ $( document ).ready(function() {
             {
                 targets: [5],
                 render: function (data, type, row, meta) {
-                    return '<a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span>'+' '+' Rating</a>';
+                    return '<input type="checkbox" checked data-toggle="toggle" data-style="ios">';
                 }
             },
 
@@ -272,7 +272,7 @@ $( document ).ready(function() {
                 render: function (data, type, row, meta) {
                     if (data!= null){
                         console.log(data);
-                        return '<img src="/resources/images/'+data+'" alt="Bugrer" class="img img-responsive" id="dataTableImg">';
+                        return '<img src="/resources/images/'+data+'" alt="Pizza" class="img img-responsive" id="dataTableImg">';
                     }
                     return "N/A";
                 }
@@ -324,7 +324,13 @@ $( document ).ready(function() {
 
     $("#addToCardBtn").click(function () {
         console.log("add to caRD");
-        $("#addToCardModal").modal('show');
+        if(id == 0){
+            $('#loginModal').show();
+        }
+        else {
+            $("#addToCardModal").modal('show');
+        }
+
     });
 
     //----------- Confirm to card -------------------
@@ -334,16 +340,17 @@ $( document ).ready(function() {
         var foodTypeId = $('#foodTypeId').text();
         var quantity = $('#qtyInput').val();
         var totalPrice = $('#totalPrice').text();
-        var customerId = customer.id;
+        var customerId = id;
 
-        console.log("C_id: "+ customerId);
+        console.log("C_id: "+ id+"---"+quantity+"------"+totalPrice+"----"+foodTypeId);
+        alert(BASEURL);
 
         $.ajax({
-
             method: 'POST',
-            url: BASEURL + "card/confirm-add-to-card",
+            url: "cart/confirm-add-to-cart",
             data : {
-                foodTypeId : foodTypeId,
+                userId : customerId,
+                foodId : foodTypeId,
                 quantity : quantity,
                 tprice : totalPrice
 

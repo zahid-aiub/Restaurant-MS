@@ -28,8 +28,8 @@ footer {
 }
 
 #dataTableImg {
-    height: 150px;
-    width: 260px;
+    height: 100px;
+    width: 150px;
 }
 
 #detailViewImg {
@@ -61,7 +61,26 @@ footer {
 
 }
 
+.glyphicon-shopping-cart:before {
+    font-size: medium;
+    content: "\e116";
+}
+
+.glyphicon-eye-open:before {
+    font-size: medium;
+    content: "\e105";
+}
+
 #confirmCardImg {
     height: 100px;
     width: 200px;
 }
+
+.btn{
+    border:0px solid transparent; /* this was 1px earlier */
+    height: auto;
+    padding: 5px 15px;
+}
+
+.toggle.ios, .toggle-on.ios, .toggle-off.ios { border-radius: 20px; }
+.toggle.ios .toggle-handle { border-radius: 20px; }

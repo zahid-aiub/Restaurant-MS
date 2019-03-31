@@ -24,10 +24,6 @@ public class BurgerItemsApi {
 
         String category = "Burger";
         List<FoodItems> foodItems = this.foodItemsService.getAllByCategory(category);
-        for (FoodItems item : foodItems ){
-            System.out.println(item.getTypeName());
-        }
-
         return foodItems;
     }
 }

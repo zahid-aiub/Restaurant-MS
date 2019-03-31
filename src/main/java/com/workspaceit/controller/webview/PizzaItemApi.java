@@ -22,10 +22,6 @@ public class PizzaItemApi {
 
         String category = "Pizza";
         List<FoodItems> foodItems = this.foodItemsService.getAllByCategory(category);
-        for (FoodItems item : foodItems ){
-            System.out.println(item.getTypeName());
-        }
-
         return foodItems;
     }
 }
