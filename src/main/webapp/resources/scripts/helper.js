@@ -1,15 +1,14 @@
 
 $( document ).ready(function() {
-    console.log( "ready!" );
 
     $("#signInBtn").click(function () {
         console.log("okkkk...!!!");
-        $("#loginModal").modal("show");
+        //$("#loginModal").modal("show");
     });
 
     $("#registration").click(function () {
         console.log("aaaaaa.....");
-        $("#registrationModal").modal("show");
+        //$("#registrationModal").show();
     });
 
     $("#offer").click(function () {

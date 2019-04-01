@@ -48,7 +48,7 @@
 			<label id="nameSpace" ></label>
 
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#" id="signInBtn" >Sign In</a></li>
+				<li><a href="#" id="signInBtn" data-toggle="modal" data-target="#loginModal" >Sign In</a></li>
 				<li><a href="#" id="offer" >Offer</a></li>
 <%--				<span id="nameSpace" ></span>--%>
 				<li class="dropdown">

@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-<div id="loginModal" class="modal" role="dialog">
+<div id="loginModal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -37,11 +37,11 @@
                         </div>
 
                     </fieldset>
-                    <a id="registration" href="#"> Create a new one!</a>
+                    <a id="registration" href="#" data-toggle="modal" data-target="#registrationModal"> Create a new one!</a>
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-outline-success" id="loginBtn">Login</button>
+                <button class="btn btn-outline-primary" id="loginBtn">Login</button>
                 <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
             </div>
 
@@ -54,7 +54,7 @@
 <!-- Registration Modal -->
 
 
-<div id="registrationModal" class="modal" tabindex="-1" role="dialog">
+<div id="registrationModal" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -100,7 +100,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <a href="#" class="btn btn-success" id="registrationBtn"><span class="glyphicon glyphicon-shopping-cart"></span>Confirm</a>
+                <a href="#" class="btn btn-primary" id="registrationBtn">Confirm</a>
                 <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
             </div>
 
@@ -137,7 +137,7 @@
                         <td hidden id="foodTypeId">${foodItem.id}</td>
                         <td><img src="/resources/images/${foodItem.image}" class="img img-responsive" id="confirmCardImg"></td>
                         <td id="itemTypeName">${foodItem.typeName}</td>
-                        <td><input id="qtyInput" type="number" min="1" value="1"></td>
+                        <td><input class="col-xs-2" id="qtyInput" type="number" min="1" value="1" style="text-align: center; border-radius:unset; width:100px "></td>
                         <td id="itemPrice">${foodItem.price}</td>
                         <td id="totalPrice">${foodItem.price}</td>
                     </tr>
@@ -203,3 +203,23 @@
 </div>
 
 --%>
+
+<!-- .modal -->
+<div class="modal fade" id="Mymodal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Notification</h4>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to continue?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
