@@ -6,15 +6,15 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class CartDao extends BaseDao{
 
-    public Cart addToCart(Cart cart) {
+    public Boolean addToCart(Cart cart) {
         try {
             Session session = this.getCurrentHibernateSession();
             session.save(cart);
-            return cart;
+            return true;
 
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
+            return false;
         }
     }
 

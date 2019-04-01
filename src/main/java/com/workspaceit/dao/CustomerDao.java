@@ -13,14 +13,14 @@ import java.util.List;
 @Repository
 public class CustomerDao extends BaseDao {
 
-    public Customer add(Customer customer) {
+    public Boolean add(Customer customer) {
         try {
             Session session = this.getCurrentHibernateSession();
              session.save(customer);
-             return customer;
+             return true;
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
+            return false;
         }
     }
 

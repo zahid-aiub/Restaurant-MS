@@ -43,19 +43,22 @@ public class CustomerApi {
         customer.setPassword(password);
         customer.setAddress(address);
 
-        this.customerService.add(customer);
-        return new ApiStatus(200,"successfully registred", "");
+        Boolean result = this.customerService.add(customer);
+        if (result){
+            return new ApiStatus(200,"successfully registred");
+        }
+        else {
+            return new ApiStatus(400,"Failed to registred");
+        }
+
     }
 
-//    @ResponseBody
+
     @RequestMapping(value = "/loginProcess")
     public ApiStatus userLoginProcess(HttpServletRequest request,@RequestParam(value = "uname") String username,
                                  @RequestParam(value = "pass") String password
                                  )
     {
-        /*String username = request.getParameter("phoneNumb");
-        String password = request.getParameter("pass");*/
-
         System.out.println("login process..."+username+password);
         if (!username.equals("") && !password.equals("")) {
             Customer customer = this.customerService.checkLogin(username, password);
@@ -72,7 +75,7 @@ public class CustomerApi {
 
             } else {
                 System.out.println("Failed to login");
-                return new ApiStatus(400,"successfull");
+                return new ApiStatus(400,"Failed to Login");
             }
         }
 

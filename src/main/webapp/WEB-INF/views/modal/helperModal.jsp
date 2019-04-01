@@ -120,13 +120,10 @@
                 <h3 class="modal-title">Add to Card</h3>
             </div>
             <div class="modal-body">
-                <h4 class="text-center">You can edit the qyantity by double clicking on it.</h4>
-                <hr>
-
-                <table class="table table-responsive" id="addToCardTable">
+                <table class="table table-borderless" id="addToCardTable">
                     <thead id="tblHead">
                     <tr>
-                        <th></th>
+                        <th hidden></th>
                         <th>Image</th>
                         <th>Name</th>
                         <th>Qty.</th>
@@ -137,7 +134,7 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td id="foodTypeId">${foodItem.id}</td>
+                        <td hidden id="foodTypeId">${foodItem.id}</td>
                         <td><img src="/resources/images/${foodItem.image}" class="img img-responsive" id="confirmCardImg"></td>
                         <td id="itemTypeName">${foodItem.typeName}</td>
                         <td><input id="qtyInput" type="number" min="1" value="1"></td>

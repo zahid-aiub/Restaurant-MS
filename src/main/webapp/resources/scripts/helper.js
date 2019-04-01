@@ -62,7 +62,6 @@ $( document ).ready(function() {
         var address = $('#address').val();
 
         if (name != "" && phone.length==11 && pass == confirmPass) {
-            $("#registrationModal").modal("hide");
             $.ajax({
                 method: 'POST',
                 url: "/user/registrationProcess",
@@ -73,7 +72,7 @@ $( document ).ready(function() {
                     address : address
                 },
                 success: function (response) {
-                    if(status == 200){
+                    if(response.status == 200){
                         console.log("yes...!!");
                         $("#registrationModal").modal("hide");
                         // $.growl.warning({message: "You have successfully registried!"});
@@ -343,7 +342,7 @@ $( document ).ready(function() {
         var customerId = id;
 
         console.log("C_id: "+ id+"---"+quantity+"------"+totalPrice+"----"+foodTypeId);
-
+        $('#addToCardModal').modal('hide');
         $.ajax({
             method: 'POST',
             url: "/cart/confirm-add-to-cart",
@@ -357,7 +356,7 @@ $( document ).ready(function() {
             success : function (response) {
                 console.log("ok...5");
                 if (response.status == 200) {
-                    console.log("ok...200");
+                    $('#addToCardModal').modal('hide');
                 }
             }
 

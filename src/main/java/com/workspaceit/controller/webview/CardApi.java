@@ -32,11 +32,13 @@ public class CardApi {
         cart.setQuantity(quantity);
         cart.setTotalPrice(totalPrice);
 
-        Cart res = this.cartService.addToCart(cart);
-        if (res!= null){
-            return new ApiStatus(200, "successfully add to cart", cart);
+        Boolean res = this.cartService.addToCart(cart);
+        if (res){
+            System.out.println("added");
+            return new ApiStatus(200, "successfully add to cart");
         }
         else {
+            System.out.println("failed to add");
             return new ApiStatus(400,"Failed to add cart");
         }
     }

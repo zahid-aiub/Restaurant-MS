@@ -59,7 +59,7 @@
 					<ul class="dropdown-menu">
 						<li><a id="profileDetails" href="#">Profile Details</a></li>
 						<li><a id="favorite" href="#">Favorite</a></li>
-						<li><a id="cart" href="#">Cart</a></li>
+						<li><a id="cart" href="#">Cart <span id="notification" class="glyphicon glyphicon-bell"></span></a></li>
 						<li role="separator" class="divider"></li>
 						<li><a id="logout" href="${contextRoot}/logout">Logout</a></li>
 					</ul>

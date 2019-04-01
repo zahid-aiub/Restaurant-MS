@@ -12,7 +12,7 @@ public class CartService {
     @Autowired
     private CartDao cartDao;
 
-    public Cart addToCart(Cart cart) {
+    public Boolean addToCart(Cart cart) {
         return this.cartDao.addToCart(cart);
     }
 }

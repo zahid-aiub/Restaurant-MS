@@ -71,6 +71,12 @@ footer {
     content: "\e105";
 }
 
+.glyphicon glyphicon-bell {
+    font-size: medium;
+    color: #1b1357;
+    margin-left: 20px;
+}
+
 #confirmCardImg {
     height: 100px;
     width: 200px;
@@ -88,4 +94,9 @@ footer {
 .modal-backdrop {
     background-color: rgba(0,0,0,.0001) !important;
     opacity: inherit;
+}
+
+#notification {
+    color: #1b1357;
+
 }

@@ -16,7 +16,7 @@ public class CustomerService extends BaseDao {
     @Autowired
     private CustomerDao customerDao;
 
-    public Customer add (Customer customer){
+    public Boolean add (Customer customer){
         return this.customerDao.add(customer);
     }
 
