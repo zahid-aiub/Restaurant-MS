@@ -105,6 +105,14 @@ public class PageControllerApi {
         return mv;
     }*/
 
+    @RequestMapping(value = "/userCart")
+    public ModelAndView cartPage (){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("home/index");
+        mv.addObject("userClickCart", true);
+        return mv;
+    }
+
     @RequestMapping(value = "/logout")
     public void signOut (HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();

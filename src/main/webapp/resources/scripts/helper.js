@@ -313,6 +313,225 @@ $( document ).ready(function() {
         ]
     });
 
+    var riceMeal = $("#riceMealDataTable").DataTable({
+
+        "processing": false,
+        "searching":true,
+        "scrollX": true,
+        "order": false,/*[[0, "desc"]]*/
+        "ajax": {
+            "url":BASEURL+ "riceMeal/riceMeal-item-list",
+            "type": "POST",
+            "dataSrc": ''
+        }
+        ,
+        "columns": [
+
+            {"data": "image"},
+            {"data": "typeName"},
+            {"data": "quantity"},
+            {"data": "price"},
+            {"data": "id"},
+            {"data": null}
+
+        ],
+        columnDefs: [
+            {
+                targets: 0,
+                "sortable":false,
+                render: function (data, type, row, meta) {
+                    if (data!= null){
+                        console.log(data);
+                        return '<img src="/resources/images/'+data+'" alt="RiceMeal" class="img img-responsive" id="dataTableImg">';
+                    }
+                    return "N/A";
+                }
+            },
+            {
+                targets: 2,
+                "sortable":false,
+                render: function (data, type, row, meta) {
+                    if (data!= null){
+                        return '<span class="badge badge-pill badge-light">'+data+'</span>';
+                    }
+                    return "N/A";
+                }
+            },
+            {
+                targets: [3],
+                render: function (data, type, row, meta) {
+                    if (data!= null){
+                        return '<span class="badge badge-secondary">'+data+' tk</span>';
+                    }
+                    else {
+                        return "N/A";
+                    }
+                }
+            },
+            {
+                targets: [4],
+                render: function (data, type, row, meta) {
+                    return '<a href="'+window.contextRoot+ '/details/'+data+'/single-item" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a> &#160'+
+                        '<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
+                }
+            },
+            {
+                targets: [5],
+                render: function (data, type, row, meta) {
+                    return '<a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span>'+' '+' Rating</a>';
+                }
+            },
+
+        ]
+    });
+
+    var snacksTable = $("#snacksDataTable").DataTable({
+
+        "processing": false,
+        "searching":true,
+        "scrollX": true,
+        "order": false,/*[[0, "desc"]]*/
+        "ajax": {
+            "url":BASEURL+ "snacks/snacks-item-list",
+            "type": "POST",
+            "dataSrc": ''
+        }
+        ,
+        "columns": [
+
+            {"data": "image"},
+            {"data": "typeName"},
+            {"data": "quantity"},
+            {"data": "price"},
+            {"data": "id"},
+            {"data": null}
+
+        ],
+        columnDefs: [
+            {
+                targets: 0,
+                "sortable":false,
+                render: function (data, type, row, meta) {
+                    if (data!= null){
+                        console.log(data);
+                        return '<img src="/resources/images/'+data+'" alt="Pizza" class="img img-responsive" id="dataTableImg">';
+                    }
+                    return "N/A";
+                }
+            },
+            {
+                targets: 2,
+                "sortable":false,
+                render: function (data, type, row, meta) {
+                    if (data!= null){
+                        return '<span class="badge badge-pill badge-light">'+data+'</span>';
+                    }
+                    return "N/A";
+                }
+            },
+            {
+                targets: [3],
+                render: function (data, type, row, meta) {
+                    if (data!= null){
+                        return '<span class="badge badge-secondary">'+data+' tk</span>';
+                    }
+                    else {
+                        return "N/A";
+                    }
+                }
+            },
+            {
+                targets: [4],
+                render: function (data, type, row, meta) {
+                    return '<a href="'+window.contextRoot+ '/details/'+data+'/single-item" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a> &#160'+
+                        '<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
+                }
+            },
+            {
+                targets: [5],
+                render: function (data, type, row, meta) {
+                    return '<a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span>'+' '+' Rating</a>';
+                }
+            },
+
+        ]
+    });
+
+
+    var drinks = $("#drinkDataTable").DataTable({
+
+        "processing": false,
+        "searching":true,
+        "scrollX": true,
+        "order": false,/*[[0, "desc"]]*/
+        "ajax": {
+            "url":BASEURL+ "drink/drink-item-list",
+            "type": "POST",
+            "dataSrc": ''
+        }
+        ,
+        "columns": [
+
+            {"data": "image"},
+            {"data": "typeName"},
+            {"data": "quantity"},
+            {"data": "price"},
+            {"data": "id"},
+            {"data": null}
+
+        ],
+        columnDefs: [
+            {
+                targets: 0,
+                "sortable":false,
+                render: function (data, type, row, meta) {
+                    if (data!= null){
+                        console.log(data);
+                        return '<img src="/resources/images/'+data+'" alt="drink" class="img img-responsive" id="dataTableImg">';
+                    }
+                    return "N/A";
+                }
+            },
+            {
+                targets: 2,
+                "sortable":false,
+                render: function (data, type, row, meta) {
+                    if (data!= null){
+                        return '<span class="badge badge-pill badge-light">'+data+'</span>';
+                    }
+                    return "N/A";
+                }
+            },
+            {
+                targets: [3],
+                render: function (data, type, row, meta) {
+                    if (data!= null){
+                        return '<span class="badge badge-secondary">'+data+' tk</span>';
+                    }
+                    else {
+                        return "N/A";
+                    }
+                }
+            },
+            {
+                targets: [4],
+                render: function (data, type, row, meta) {
+                    return '<a href="'+window.contextRoot+ '/details/'+data+'/single-item" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a> &#160'+
+                        '<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
+                }
+            },
+            {
+                targets: [5],
+                render: function (data, type, row, meta) {
+                    return '<a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span>'+' '+' Rating</a>';
+                }
+            },
+
+        ]
+    });
+
+
+
     //------------ Details view Item ------------
 
     $("#viewItem").click(function () {
@@ -362,6 +581,78 @@ $( document ).ready(function() {
         });
 
 
+    });
+
+
+    var cartTable = $("#cartDataTable").DataTable({
+
+        "processing": false,
+        "searching":true,
+        "scrollX": true,
+        "order": false,/*[[0, "desc"]]*/
+        "ajax": {
+            "url": "cart/userCartDetails",
+            "type": "POST",
+            "dataSrc": ''
+        }
+        ,
+        "columns": [
+
+            {"data": "image"},
+            {"data": "typeName"},
+            {"data": "quantity"},
+            {"data": "price"},
+            {"data": null}
+
+        ],
+        columnDefs: [
+            {
+                targets: 0,
+                "sortable":false,
+                render: function (data, type, row, meta) {
+                    if (data!= null){
+                        console.log(data);
+                        return '<img src="/resources/images/'+data+'" alt="Bugrer" class="img img-responsive" id="dataTableImg">';
+                    }
+                    return "N/A";
+                }
+            },
+            {
+                targets: 2,
+                "sortable":false,
+                render: function (data, type, row, meta) {
+                    if (data!= null){
+                        return '<span class="badge badge-pill badge-light">'+data+'</span>';
+                    }
+                    return "N/A";
+                }
+            },
+            {
+                targets: [3],
+                render: function (data, type, row, meta) {
+                    if (data!= null){
+                        return '<span class="badge badge-secondary">'+data+' tk</span>';
+                    }
+                    else {
+                        return "N/A";
+                    }
+                }
+            },
+            /*{
+                targets: [4],
+                render: function (data, type, row, meta) {
+                    return '<a href="'+window.contextRoot+ '/details/'+data+'/single-item" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a> &#160'+
+                        '<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
+                }
+            },*/
+            {
+                targets: [4],
+                render: function (data, type, row, meta) {
+                    return '<a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span>'+' '+' Rating</a>';
+                }
+            },
+
+        ]
     });
 
 });

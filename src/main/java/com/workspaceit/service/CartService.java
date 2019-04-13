@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class CartService {
@@ -14,5 +16,9 @@ public class CartService {
 
     public Boolean addToCart(Cart cart) {
         return this.cartDao.addToCart(cart);
+    }
+
+    public List<Object> userCartDetails(int uId) {
+        return this.cartDao.userCartDetails(uId);
     }
 }

@@ -147,6 +147,10 @@
                 <%@include file="/WEB-INF/views/shared/itemDetails.jsp" %>
             </c:when>
 
+            <c:when test="${userClickCart == true}">
+                <%@include file="/WEB-INF/views/myCart.jsp" %>
+            </c:when>
+
             <c:otherwise>
                 <%@include file="/WEB-INF/views/home.jsp"%>
             </c:otherwise>

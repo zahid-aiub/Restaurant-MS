@@ -23,4 +23,11 @@ public class FoodItemsService {
         return this.foodItemsDao.getItemByid(id);
     }
 
+    public int getQuantity(int foodId) {
+        return foodItemsDao.getQuantity(foodId);
+    }
+
+    public void updateQuantity(int updatedQuantity, int foodId) {
+        this.foodItemsDao.updateQuantity(updatedQuantity, foodId);
+    }
 }
