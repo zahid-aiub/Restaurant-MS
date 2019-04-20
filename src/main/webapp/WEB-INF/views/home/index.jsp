@@ -168,6 +168,7 @@
 <script src="/resources/assets/js/jquery.dataTables.js"></script>
 <script src="/resources/assets/js/bootstrap.js"></script>
 <script src="/resources/assets/js/dataTables.bootstrap.js"></script>
+<script src="/resources/assets/js/jqueryCard.js"></script>
 
 <script src="<c:url value="/resources/scripts/helper.js"/>"></script>
 

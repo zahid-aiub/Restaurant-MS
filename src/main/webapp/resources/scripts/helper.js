@@ -16,6 +16,7 @@ $( document ).ready(function() {
         console.log(id);
     });
 
+
     $("#loginBtn").click(function () {
         var username = $('#phoneNumb').val();
         var password = $('#pass').val();
@@ -651,11 +652,27 @@ $( document ).ready(function() {
             {
                 targets: 4,
                 render: function (data, type, row, meta) {
-                    return '<a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span>'+' '+' Rating</a>';
+                    return '<button id="placeOrderBtn" class="btn btn-success">Smart Cart</button>';
                 }
             },
 
         ]
     });
+
+    $('#paymentDiv').card({
+        container: '.card-wrapper'
+    });
+
+   /* $('#placeorder').click(function () {
+
+        // $('#paymentModal').modal("show");
+        /!*$('#masterCardDiv').card({
+            // a selector or DOM element for the container
+            // where you want the card to appear
+            container: '.card-wrapper', // *required*
+
+            // all of the other options from above
+        });*!/
+    });*/
 
 });
