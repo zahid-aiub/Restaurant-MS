@@ -1,8 +1,8 @@
 package com.workspaceit.controller.webview;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.workspaceit.entity.Cart;
 import com.workspaceit.entity.Customer;
-import com.workspaceit.entity.FoodItems;
 import com.workspaceit.pojo.wraper.ApiStatus;
 import com.workspaceit.service.CartService;
 import com.workspaceit.service.FoodItemsService;
@@ -14,8 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.lang.reflect.Field;
-import java.util.List;
+import java.io.IOException;
 
 @Controller
 @RequestMapping(value = "/cart")
@@ -58,26 +57,40 @@ public class CardApi {
         }
     }
 
-    //userCartDetails
+
     @ResponseBody
     @RequestMapping(value = "/userCartDetails")
-    public List<Object> cartDetails (HttpServletRequest request) {
+    public Object cartDetails (HttpServletRequest request) {
 
         HttpSession session = request.getSession();
         Customer customer =(Customer) session.getAttribute("user");
-        List<Object> obj = this.cartService.userCartDetails(customer.getId());
+        Object obj = this.cartService.userCartDetails(customer.getId());
+        String jsonStr="";
 
-        Class<?> clazz = obj.getClass();
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
 
+            jsonStr = objectMapper.writeValueAsString(obj);
+
+            System.out.println(jsonStr);
+        }
+
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        /*Class<?> clazz = obj.getClass();
         for(Field field : clazz.getDeclaredFields()) {
 
             System.out.println(field.getName());
-        }
-        /*for (Object ob : obj){
-            System.out.println("****************** "+ob.+"----");
         }*/
 
-        return null;
+        if (obj != null){
+            System.out.println("****************** "+obj.toString()+"----");
+        }
+
+        return jsonStr;
     }
 
 }

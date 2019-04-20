@@ -18,7 +18,7 @@ public class CartService {
         return this.cartDao.addToCart(cart);
     }
 
-    public List<Object> userCartDetails(int uId) {
+    public Object userCartDetails(int uId) {
         return this.cartDao.userCartDetails(uId);
     }
 }

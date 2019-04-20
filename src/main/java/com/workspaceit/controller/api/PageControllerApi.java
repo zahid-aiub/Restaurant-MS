@@ -1,6 +1,8 @@
 package com.workspaceit.controller.api;
 
+import com.workspaceit.entity.Customer;
 import com.workspaceit.entity.FoodItems;
+import com.workspaceit.service.CartService;
 import com.workspaceit.service.FoodItemsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,9 @@ public class PageControllerApi {
 
     @Autowired
     FoodItemsService foodItemsService;
+
+    @Autowired
+    private CartService cartService;
 
     @RequestMapping(value = "/")
     public ModelAndView index(){
@@ -106,10 +111,16 @@ public class PageControllerApi {
     }*/
 
     @RequestMapping(value = "/userCart")
-    public ModelAndView cartPage (){
+    public ModelAndView cartPage (/*HttpServletRequest request*/){
+        /*
+        HttpSession session = request.getSession();
+        Customer customer =(Customer) session.getAttribute("user");
+        Object obj = this.cartService.userCartDetails(customer.getId());*/
+
         ModelAndView mv = new ModelAndView();
         mv.setViewName("home/index");
         mv.addObject("userClickCart", true);
+        /*mv.addObject("cart", obj);*/
         return mv;
     }
 

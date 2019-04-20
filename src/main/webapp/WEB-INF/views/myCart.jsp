@@ -15,14 +15,14 @@
         <table id="cartDataTable" class="table table-striped table-bordered dt-responsive nowrap"
                cellspacing="0" width="100%">
             <thead>
-            <tr>
+            <%--<tr>
                 <th>Image</th>
                 <th>Name</th>
                 <th>Quantity</th>
                 <th>Total Price</th>
                 <th>Action</th>
 
-            </tr>
+            </tr>--%>
             </thead>
 
         </table>

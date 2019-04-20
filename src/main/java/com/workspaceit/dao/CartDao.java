@@ -20,11 +20,13 @@ public class CartDao extends BaseDao{
         }
     }
 
-    public List<Object> userCartDetails(int uId) {
+    public Object userCartDetails(int uId) {
         try {
-            String query = "select f.image, f.typeName from FoodItems as f left join Cart as c on f.id=c.foodTypeId where c.customerId=:u_id";
+            String query = "select f.image, f.typeName, c.quantity, c.totalPrice from FoodItems f " +
+                    "join Cart c on f.id=c.foodTypeId where c.customerId=:u_id";
             Session session = this.getCurrentHibernateSession();
-            return session.createQuery(query).setParameter("u_id", uId).list();
+            List<Object> cart = session.createQuery(query).setParameter("u_id", uId).list();
+            return  cart;
 
         } catch (Exception e) {
             e.printStackTrace();

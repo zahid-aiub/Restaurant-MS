@@ -233,7 +233,7 @@ $( document ).ready(function() {
             {
                 targets: [5],
                 render: function (data, type, row, meta) {
-                    return '<a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span>'+' '+' Rating</a>';
+                    return '<input type="checkbox" checked data-toggle="toggle" data-style="ios">';
                 }
             },
 
@@ -306,7 +306,7 @@ $( document ).ready(function() {
             {
                 targets: [5],
                 render: function (data, type, row, meta) {
-                    return '<a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span>'+' '+' Rating</a>';
+                    return '<input type="checkbox" checked data-toggle="toggle" data-style="ios">';
                 }
             },
 
@@ -378,7 +378,7 @@ $( document ).ready(function() {
             {
                 targets: [5],
                 render: function (data, type, row, meta) {
-                    return '<a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span>'+' '+' Rating</a>';
+                    return '<input type="checkbox" checked data-toggle="toggle" data-style="ios">';
                 }
             },
 
@@ -450,7 +450,7 @@ $( document ).ready(function() {
             {
                 targets: [5],
                 render: function (data, type, row, meta) {
-                    return '<a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span>'+' '+' Rating</a>';
+                    return '<input type="checkbox" checked data-toggle="toggle" data-style="ios">';
                 }
             },
 
@@ -523,7 +523,7 @@ $( document ).ready(function() {
             {
                 targets: [5],
                 render: function (data, type, row, meta) {
-                    return '<a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span>'+' '+' Rating</a>';
+                    return '<input type="checkbox" checked data-toggle="toggle" data-style="ios">';
                 }
             },
 
@@ -601,7 +601,7 @@ $( document ).ready(function() {
             {"data": "image"},
             {"data": "typeName"},
             {"data": "quantity"},
-            {"data": "price"},
+            {"data": "totalPrice"},
             {"data": null}
 
         ],
@@ -612,7 +612,17 @@ $( document ).ready(function() {
                 render: function (data, type, row, meta) {
                     if (data!= null){
                         console.log(data);
-                        return '<img src="/resources/images/'+data+'" alt="Bugrer" class="img img-responsive" id="dataTableImg">';
+                        return '<img src="/resources/images/'+data+'" alt="Image" class="img img-responsive" id="dataTableImg">';
+                    }
+                    return "N/A";
+                }
+            },
+            {
+                targets: 1,
+                "sortable":false,
+                render: function (data, type, row, meta) {
+                    if (data!= null){
+                        return '<span class="badge badge-pill badge-light">'+data+'</span>';
                     }
                     return "N/A";
                 }
@@ -628,7 +638,7 @@ $( document ).ready(function() {
                 }
             },
             {
-                targets: [3],
+                targets: 3,
                 render: function (data, type, row, meta) {
                     if (data!= null){
                         return '<span class="badge badge-secondary">'+data+' tk</span>';
@@ -638,15 +648,8 @@ $( document ).ready(function() {
                     }
                 }
             },
-            /*{
-                targets: [4],
-                render: function (data, type, row, meta) {
-                    return '<a href="'+window.contextRoot+ '/details/'+data+'/single-item" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a> &#160'+
-                        '<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
-                }
-            },*/
             {
-                targets: [4],
+                targets: 4,
                 render: function (data, type, row, meta) {
                     return '<a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span>'+' '+' Rating</a>';
                 }
