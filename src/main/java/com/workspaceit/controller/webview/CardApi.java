@@ -1,8 +1,8 @@
 package com.workspaceit.controller.webview;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.workspaceit.entity.Cart;
 import com.workspaceit.entity.Customer;
+import com.workspaceit.entity.Helper;
 import com.workspaceit.pojo.wraper.ApiStatus;
 import com.workspaceit.service.CartService;
 import com.workspaceit.service.FoodItemsService;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "/cart")
@@ -31,7 +31,9 @@ public class CardApi {
                                        @RequestParam("userId") int uid,
                                        @RequestParam("foodId") int foodTypeId,
                                        @RequestParam("quantity") int quantity,
-                                       @RequestParam("tprice") int totalPrice
+                                       @RequestParam("tprice") int totalPrice,
+                                       @RequestParam("typeName") String typeName,
+                                       @RequestParam("image") String image
                                        ) {
 
         System.out.println(uid+"----"+foodTypeId+"----"+ quantity+"----"+totalPrice);
@@ -40,6 +42,8 @@ public class CardApi {
         cart.setFoodTypeId(foodTypeId);
         cart.setQuantity(quantity);
         cart.setTotalPrice(totalPrice);
+        cart.setFoodTypeName(typeName);
+        cart.setImage(image);
 
         int dbQuantity = this.foodItemsService.getQuantity(foodTypeId);
         System.out.println("Database Food quantity: "+dbQuantity);
@@ -64,10 +68,10 @@ public class CardApi {
 
         HttpSession session = request.getSession();
         Customer customer =(Customer) session.getAttribute("user");
-        Object obj = this.cartService.userCartDetails(customer.getId());
-        String jsonStr="";
+        List<Cart> carts = this.cartService.userCartDetails(customer.getId());
 
-        ObjectMapper objectMapper = new ObjectMapper();
+
+        /*ObjectMapper objectMapper = new ObjectMapper();
         try {
 
             jsonStr = objectMapper.writeValueAsString(obj);
@@ -77,7 +81,7 @@ public class CardApi {
 
         catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
 
         /*Class<?> clazz = obj.getClass();
@@ -86,11 +90,11 @@ public class CardApi {
             System.out.println(field.getName());
         }*/
 
-        if (obj != null){
-            System.out.println("****************** "+obj.toString()+"----");
+        if (carts != null){
+            System.out.println("****************** "+"----");
         }
 
-        return jsonStr;
+        return carts;
     }
 
 }

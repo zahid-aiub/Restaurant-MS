@@ -16,7 +16,7 @@
 				<th>Quantity Available</th>
 				<th>Price</th>
 				<th>Action</th>
-				<th>Review</th>
+				<th></th>
 			</tr>
 			</thead>
 			<tfoot>
@@ -26,7 +26,7 @@
 				<th>Quantity Available</th>
 				<th>Price</th>
 				<th>Action</th>
-				<th>Review</th>
+				<th></th>
 			</tr>
 			</tfoot>
 

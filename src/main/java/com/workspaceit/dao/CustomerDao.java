@@ -30,16 +30,8 @@ public class CustomerDao extends BaseDao {
         try {
             String hql = "from Customer WHERE phone=:phone and password=:pass";
             Session session = this.getCurrentHibernateSession();
-            System.out.println("In try block");
             return (Customer) session.createQuery(hql).setParameter("phone", uname).setParameter("pass", pass).uniqueResult();
 
-            /*if(res>-1){
-                System.out.println("Result: "+res);
-                return true;
-            }
-            else {
-                return false;
-            }*/
         }
 
         catch (Exception e){

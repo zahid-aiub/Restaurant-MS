@@ -21,6 +21,30 @@ $( document ).ready(function() {
         var username = $('#phoneNumb').val();
         var password = $('#pass').val();
 
+        if (username == 'admin') {
+            console.log("admin login");
+            $.ajax({
+                method: 'POST',
+                url: BASEURL + "/admin/loginProcess",
+                data: {
+                    uname : username,
+                    pass : password
+                },
+
+                success: function (response) {
+                    if(response.status == 200){
+
+                        console.log("its work...!!");
+                        window.location.replace("http://localhost:8082/");
+                        // $.growl.warning({message: "You have successfully registried!"});
+                    }
+                },
+                error: function (response) {
+                    console.log("error");
+                }
+            });
+        }
+
         if (!username=="" && !password==""){
             console.log(BASEURL);
             $.ajax({
@@ -151,14 +175,25 @@ $( document ).ready(function() {
             {
                 targets: [4],
                 render: function (data, type, row, meta) {
-                    return '<a href="'+window.contextRoot+ '/details/'+data+'/single-item" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a> &#160'+
-                        '<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
+                    if (id < 0) {
+                        return "";
+                    }
+                    else {
+                        return '<a href="'+window.contextRoot+ '/details/'+data+'/single-item" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a> &#160'+
+                            '<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
+                    }
                 }
             },
             {
                 targets: [5],
                 render: function (data, type, row, meta) {
-                    return '<input type="checkbox" checked data-toggle="toggle" data-style="ios">';
+                    if (id < 0) {
+                        return '<input id="productStatus" type="checkbox" onchange="changeProductStatus(this)" checked data-toggle="toggle" data-style="ios"> ' +
+                            '<a id="editBtn" onclick="editItems(this)"> <span class="glyphicon glyphicon-cog"></span> </a>';
+                    }
+                    else {
+                        return "";
+                    }
                 }
             },
 
@@ -227,14 +262,25 @@ $( document ).ready(function() {
             {
                 targets: [4],
                 render: function (data, type, row, meta) {
-                    return '<a href="'+window.contextRoot+ '/details/'+data+'/single-item" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a> &#160'+
-                        '<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
+                    if (id < 0) {
+                        return "";
+                    }
+                    else {
+                        return '<a href="'+window.contextRoot+ '/details/'+data+'/single-item" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a> &#160'+
+                            '<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
+                    }
                 }
             },
             {
                 targets: [5],
                 render: function (data, type, row, meta) {
-                    return '<input type="checkbox" checked data-toggle="toggle" data-style="ios">';
+                    if (id < 0) {
+                        return '<input id="productStatus" type="checkbox" onchange="changeProductStatus(this)" checked data-toggle="toggle" data-style="ios"> ' +
+                            '<a id="editBtn" onclick="editItems(this)"> <span class="glyphicon glyphicon-cog"></span> </a>';
+                    }
+                    else {
+                        return "";
+                    }
                 }
             },
 
@@ -300,14 +346,25 @@ $( document ).ready(function() {
             {
                 targets: [4],
                 render: function (data, type, row, meta) {
-                    return '<a href="'+window.contextRoot+ '/details/'+data+'/single-item" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a> &#160'+
-                        '<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
+                    if (id < 0) {
+                        return "";
+                    }
+                    else {
+                        return '<a href="'+window.contextRoot+ '/details/'+data+'/single-item" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a> &#160'+
+                            '<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
+                    }
                 }
             },
             {
                 targets: [5],
                 render: function (data, type, row, meta) {
-                    return '<input type="checkbox" checked data-toggle="toggle" data-style="ios">';
+                    if (id < 0) {
+                        return '<input id="productStatus" type="checkbox" onchange="changeProductStatus(this)" checked data-toggle="toggle" data-style="ios"> ' +
+                            '<a id="editBtn" onclick="editItems(this)"> <span class="glyphicon glyphicon-cog"></span> </a>';
+                    }
+                    else {
+                        return "";
+                    }
                 }
             },
 
@@ -372,14 +429,25 @@ $( document ).ready(function() {
             {
                 targets: [4],
                 render: function (data, type, row, meta) {
-                    return '<a href="'+window.contextRoot+ '/details/'+data+'/single-item" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a> &#160'+
-                        '<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
+                    if (id < 0) {
+                        return "";
+                    }
+                    else {
+                        return '<a href="'+window.contextRoot+ '/details/'+data+'/single-item" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a> &#160'+
+                            '<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
+                    }
                 }
             },
             {
                 targets: [5],
                 render: function (data, type, row, meta) {
-                    return '<input type="checkbox" checked data-toggle="toggle" data-style="ios">';
+                    if (id < 0) {
+                        return '<input id="productStatus" type="checkbox" onchange="changeProductStatus(this)" checked data-toggle="toggle" data-style="ios"> ' +
+                            '<a id="editBtn" onclick="editItems(this)"> <span class="glyphicon glyphicon-cog"></span> </a>';
+                    }
+                    else {
+                        return "";
+                    }
                 }
             },
 
@@ -444,14 +512,25 @@ $( document ).ready(function() {
             {
                 targets: [4],
                 render: function (data, type, row, meta) {
-                    return '<a href="'+window.contextRoot+ '/details/'+data+'/single-item" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a> &#160'+
-                        '<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
+                    if (id < 0) {
+                        return "";
+                    }
+                    else {
+                        return '<a href="'+window.contextRoot+ '/details/'+data+'/single-item" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a> &#160'+
+                            '<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
+                    }
                 }
             },
             {
                 targets: [5],
                 render: function (data, type, row, meta) {
-                    return '<input type="checkbox" checked data-toggle="toggle" data-style="ios">';
+                    if (id < 0) {
+                        return '<input id="productStatus" type="checkbox" onchange="changeProductStatus(this)" checked data-toggle="toggle" data-style="ios"> ' +
+                            '<a id="editBtn" onclick="editItems(this)"> <span class="glyphicon glyphicon-cog"></span> </a>';
+                    }
+                    else {
+                        return "";
+                    }
                 }
             },
 
@@ -517,14 +596,26 @@ $( document ).ready(function() {
             {
                 targets: [4],
                 render: function (data, type, row, meta) {
-                    return '<a href="'+window.contextRoot+ '/details/'+data+'/single-item" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a> &#160'+
-                        '<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
+                    if (id < 0) {
+                        return "";
+                    }
+                    else {
+                        return '<a href="'+window.contextRoot+ '/details/'+data+'/single-item" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a> &#160'+
+                            '<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
+                    }
+
                 }
             },
             {
                 targets: [5],
                 render: function (data, type, row, meta) {
-                    return '<input type="checkbox" checked data-toggle="toggle" data-style="ios">';
+                    if (id < 0) {
+                        return '<input id="productStatus" type="checkbox" onchange="changeProductStatus(this)" checked data-toggle="toggle" data-style="ios"> ' +
+                            '<a id="editBtn" onclick="editItems(this)"> <span class="glyphicon glyphicon-cog"></span> </a>';
+                    }
+                    else {
+                        return "";
+                    }
                 }
             },
 
@@ -558,9 +649,11 @@ $( document ).ready(function() {
         var foodTypeId = $('#foodTypeId').text();
         var quantity = $('#qtyInput').val();
         var totalPrice = $('#totalPrice').text();
+        var name = $('#itemTypeName').text();
+        var image = $("#imageInput").val();
         var customerId = id;
 
-        console.log("C_id: "+ id+"---"+quantity+"------"+totalPrice+"----"+foodTypeId);
+        console.log("C_id: "+ id+"---"+quantity+"------"+name+"----"+foodTypeId+"---"+ image);
         $('#addToCardModal').modal('hide');
         $.ajax({
             method: 'POST',
@@ -569,7 +662,9 @@ $( document ).ready(function() {
                 userId : customerId,
                 foodId : foodTypeId,
                 quantity : quantity,
-                tprice : totalPrice
+                tprice : totalPrice,
+                typeName : name,
+                image : image
 
             },
             success : function (response) {
@@ -600,7 +695,7 @@ $( document ).ready(function() {
         "columns": [
 
             {"data": "image"},
-            {"data": "typeName"},
+            {"data": "foodTypeName"},
             {"data": "quantity"},
             {"data": "totalPrice"},
             {"data": null}
@@ -652,7 +747,8 @@ $( document ).ready(function() {
             {
                 targets: 4,
                 render: function (data, type, row, meta) {
-                    return '<button id="placeOrderBtn" class="btn btn-success">Smart Cart</button>';
+                    return '<button id="placeOrderBtn" class="btn btn-success">Smart Cart</button>' +
+                        '';
                 }
             },
 
@@ -663,16 +759,48 @@ $( document ).ready(function() {
         container: '.card-wrapper'
     });
 
-   /* $('#placeorder').click(function () {
-
-        // $('#paymentModal').modal("show");
-        /!*$('#masterCardDiv').card({
-            // a selector or DOM element for the container
-            // where you want the card to appear
-            container: '.card-wrapper', // *required*
-
-            // all of the other options from above
-        });*!/
-    });*/
-
 });
+
+function changeProductStatus(checkboxElem) {
+    if (checkboxElem.checked) {
+        console.log("checked");
+        $.ajax({
+            method: 'POST',
+            url: "/admin/changeProductStatus",
+            data: {
+                status: 1
+            },
+            success: function (response) {
+                if(response.status == 200){
+                    console.log("yes...updated...!!");
+
+                }
+            }
+        });
+
+    } else {
+        console.log("un-checked");
+        $.ajax({
+            method: 'POST',
+            url: "/admin/changeProductStatus",
+            data: {
+                status: 0
+            },
+            success: function (response) {
+                if(response.status == 200){
+                    console.log("yes...updated...!!");
+
+                }
+            }
+        });
+
+    }
+
+}
+
+//----edit items
+function editItems(click) {
+    console.log("dfcfnhgchjn")
+}
+
+

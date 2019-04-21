@@ -11,9 +11,10 @@ public class FoodItemsDao extends BaseDao{
 
     public List<FoodItems> getAllByCategory(String category) {
         try {
-            String query = "from FoodItems WHERE category=:category";
+            String query = "from FoodItems WHERE category=:category and status=:stts";
             Session session = this.getCurrentHibernateSession();
-            return session.createQuery(query).setParameter("category", category).list();
+            return session.createQuery(query).setParameter("category", category)
+                    .setParameter("stts", 1).list();
         }
         catch (Exception e){
             e.printStackTrace();

@@ -1,4 +1,5 @@
-<%@ page import="com.workspaceit.entity.Customer" %><%--
+<%@ page import="com.workspaceit.entity.Customer" %>
+<%@ page import="com.workspaceit.entity.Admin" %><%--
   Created by IntelliJ IDEA.
   User: zahidul
   Date: 3/7/19
@@ -84,6 +85,13 @@
         id = session_val.getId();
         name = session_val.getName();
         phone = session_val.getPhone();
+    }
+    else {
+        if(session.getAttribute("admin") != null) {
+            Admin admin_session_val = (Admin) session.getAttribute("admin");
+            id = -1;
+            name = admin_session_val.getName();
+        }
     }
 
 %>

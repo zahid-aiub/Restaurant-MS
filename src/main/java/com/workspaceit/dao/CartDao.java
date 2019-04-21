@@ -1,5 +1,6 @@
 package com.workspaceit.dao;
 import com.workspaceit.entity.Cart;
+import com.workspaceit.entity.Helper;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
@@ -20,13 +21,12 @@ public class CartDao extends BaseDao{
         }
     }
 
-    public Object userCartDetails(int uId) {
+    public List<Cart> userCartDetails(int uId) {
         try {
-            String query = "select f.image, f.typeName, c.quantity, c.totalPrice from FoodItems f " +
-                    "join Cart c on f.id=c.foodTypeId where c.customerId=:u_id";
+            String query = "from Cart WHERE customerId=:c_Id";
             Session session = this.getCurrentHibernateSession();
-            List<Object> cart = session.createQuery(query).setParameter("u_id", uId).list();
-            return  cart;
+            return session.createQuery(query).setParameter("c_Id", uId).list();
+
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,6 +1,7 @@
 package com.workspaceit.service;
 import com.workspaceit.dao.CartDao;
 import com.workspaceit.entity.Cart;
+import com.workspaceit.entity.Helper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +19,7 @@ public class CartService {
         return this.cartDao.addToCart(cart);
     }
 
-    public Object userCartDetails(int uId) {
+    public List<Cart> userCartDetails(int uId) {
         return this.cartDao.userCartDetails(uId);
     }
 }

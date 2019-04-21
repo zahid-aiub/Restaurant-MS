@@ -12,7 +12,7 @@
     </div>
 
     <div>
-        <table id="cartDataTable" class="table table-striped table-bordered dt-responsive nowrap"
+        <table id="cartDataTable" class="table table-striped"
                cellspacing="0" width="100%">
             <thead>
             <tr>

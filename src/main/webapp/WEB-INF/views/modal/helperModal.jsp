@@ -144,6 +144,7 @@
                     </tbody>
                 </table>
             </div>
+            <input id="imageInput" hidden type="text" value="${foodItem.image}" >
             <div class="modal-footer">
                 <a class="btn btn-success" id="confirmBtn"><span class="glyphicon glyphicon-shopping-cart"></span>Confirm</a>
                 <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
