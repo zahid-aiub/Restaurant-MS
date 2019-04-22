@@ -1,5 +1,6 @@
 <%@ page import="com.workspaceit.entity.Customer" %>
-<%@ page import="com.workspaceit.entity.Admin" %><%--
+<%@ page import="com.workspaceit.entity.Admin" %>
+<%--
   Created by IntelliJ IDEA.
   User: zahidul
   Date: 3/7/19
@@ -65,8 +66,9 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="<c:url value="/resources/css/index.css"/> ">
-<%--    <link rel="text/javascript" href="<c:url value="/resources/scripts/helper.js"/> ">--%>
+    <link rel="stylesheet" href="<c:url value="/resources/css/index.css"/> ">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <%--    <link rel="text/javascript" href="<c:url value="/resources/scripts/helper.js"/> ">--%>
 
 </head>
 <body>

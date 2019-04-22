@@ -1,6 +1,5 @@
 package com.workspaceit.dao;
 import com.workspaceit.entity.Cart;
-import com.workspaceit.entity.Helper;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
@@ -31,6 +30,45 @@ public class CartDao extends BaseDao{
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    public Integer getFoodTypeId(int foodId) {
+        try {
+            String query = "select foodTypeId from Cart WHERE id=:f_id";
+            Session session = this.getCurrentHibernateSession();
+            return (Integer) session.createQuery(query)
+                    .setParameter("f_id", foodId).uniqueResult();
+        }
+        catch (Exception e ) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public Integer getQuantity(int foodId) {
+        try {
+            String query = "select quantity from Cart WHERE id=:f_id";
+            Session session = this.getCurrentHibernateSession();
+            return (Integer) session.createQuery(query)
+                    .setParameter("f_id", foodId).uniqueResult();
+        }
+        catch (Exception e ) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public Integer removeFromCart(int foodId) {
+        try {
+            String query = "delete FROM Cart where id=:food_id";
+            Session session = this.getCurrentHibernateSession();
+            session.createNativeQuery(query).setParameter("food_id", foodId);
+            return 1;
+        }
+        catch (Exception e ) {
+            e.printStackTrace();
+            return 0;
         }
     }
 }

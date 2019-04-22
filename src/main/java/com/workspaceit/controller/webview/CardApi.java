@@ -70,31 +70,27 @@ public class CardApi {
         Customer customer =(Customer) session.getAttribute("user");
         List<Cart> carts = this.cartService.userCartDetails(customer.getId());
 
-
-        /*ObjectMapper objectMapper = new ObjectMapper();
-        try {
-
-            jsonStr = objectMapper.writeValueAsString(obj);
-
-            System.out.println(jsonStr);
-        }
-
-        catch (IOException e) {
-            e.printStackTrace();
-        }*/
-
-
-        /*Class<?> clazz = obj.getClass();
-        for(Field field : clazz.getDeclaredFields()) {
-
-            System.out.println(field.getName());
-        }*/
-
-        if (carts != null){
-            System.out.println("****************** "+"----");
-        }
-
         return carts;
+    }
+
+    @RequestMapping(value = "/removeFromCard")
+    public ApiStatus removeFromCart(@RequestParam("uId") int uId,
+                                    @RequestParam("foodId") int foodId ){
+        System.out.println(uId+"---"+ foodId);
+        Integer foodTypeId = this.cartService.getFoodTypeId(foodId);
+        System.out.println("food type id---"+foodTypeId);
+        Integer cartTableQuantity = this.cartService.getQuantity(foodId);
+        System.out.println("Cart Table qty---"+cartTableQuantity);
+        Integer foodTableQuantity = this.foodItemsService.getQuantity(foodTypeId);
+        System.out.println("DB food type qty---"+foodTableQuantity);
+
+        Integer isDelete = cartService.removeFromCart(foodId);
+        System.out.println("Deleted"+ isDelete);
+        if (isDelete==1){
+            System.out.println("Deleted");
+        }
+
+        return new ApiStatus(200,"ok");
     }
 
 }

@@ -1,6 +1,8 @@
 
 $( document ).ready(function() {
 
+    var food_id;
+
     $("#signInBtn").click(function () {
         console.log("okkkk...!!!");
         //$("#loginModal").modal("show");
@@ -694,6 +696,7 @@ $( document ).ready(function() {
         ,
         "columns": [
 
+            {"data": "id"},
             {"data": "image"},
             {"data": "foodTypeName"},
             {"data": "quantity"},
@@ -705,12 +708,12 @@ $( document ).ready(function() {
             {
                 targets: 0,
                 "sortable":false,
+                "hidden" : true,
                 render: function (data, type, row, meta) {
                     if (data!= null){
-                        console.log(data);
-                        return '<img src="/resources/images/'+data+'" alt="Image" class="img img-responsive" id="dataTableImg">';
+                        return data;
                     }
-                    return "N/A";
+                    return "";
                 }
             },
             {
@@ -718,7 +721,8 @@ $( document ).ready(function() {
                 "sortable":false,
                 render: function (data, type, row, meta) {
                     if (data!= null){
-                        return '<span class="badge badge-pill badge-light">'+data+'</span>';
+                        console.log(data);
+                        return '<img src="/resources/images/'+data+'" alt="Image" class="img img-responsive" id="dataTableImg">';
                     }
                     return "N/A";
                 }
@@ -735,6 +739,16 @@ $( document ).ready(function() {
             },
             {
                 targets: 3,
+                "sortable":false,
+                render: function (data, type, row, meta) {
+                    if (data!= null){
+                        return '<span class="badge badge-pill badge-light">'+data+'</span>';
+                    }
+                    return "N/A";
+                }
+            },
+            {
+                targets: 4,
                 render: function (data, type, row, meta) {
                     if (data!= null){
                         return '<span class="badge badge-secondary">'+data+' tk</span>';
@@ -745,10 +759,10 @@ $( document ).ready(function() {
                 }
             },
             {
-                targets: 4,
+                targets: 5,
                 render: function (data, type, row, meta) {
-                    return '<button id="placeOrderBtn" class="btn btn-success">Smart Cart</button>' +
-                        '';
+                    return '<button id="placeOrderBtn" onclick="placeOrder(this)" class="btn btn-success" data-toggle="modal" data-target="#paymentDiv">Place Order</button>' +
+                        '<i class="fa fa-trash" data-toggle="modal" data-target="#warningModdal" onclick="deleteItem()" style="font-size:30px;color:red"></i>';
                 }
             },
 
@@ -757,6 +771,31 @@ $( document ).ready(function() {
 
     $('#paymentDiv').card({
         container: '.card-wrapper'
+    });
+
+    $('#remove_yes').click(function () {
+        //console.log("remove");
+        var userId = id;
+        var foodId = selectedFoodId;
+
+        console.log(id+"----"+ foodId);
+
+        $.ajax({
+            method: 'POST',
+            url: "/cart/removeFromCard",
+            data: {
+                uId : userId,
+                foodId : foodId
+            },
+            success: function (response) {
+                if(response.status == 200){
+                    console.log("yes...updated...!!");
+
+                }
+            }
+        });
+
+
     });
 
 });
@@ -800,7 +839,35 @@ function changeProductStatus(checkboxElem) {
 
 //----edit items
 function editItems(click) {
-    console.log("dfcfnhgchjn")
+    console.log("dfcfnhgchjn");
+}
+
+function placeOrder(event) {
+    console.log("place order")
+}
+
+function test(){
+    var table = $('#cartDataTable').DataTable();
+    $('#cartDataTable tbody').on( 'click', 'tr', function () {
+        table.$('tr.selected').removeClass('selected');
+        $(this).addClass('selected');
+        return true;
+    } );
+    return false;
+}
+var selectedFoodId;
+
+function deleteItem() {
+
+    $.when(test()).then(function( x ) {
+        $.each($("#cartDataTable tr.selected"),function(){ //get each tr which has selected class
+            var selectedItemId = $(this).find('td').eq(0).text();
+            console.log(selectedItemId);
+            selectedFoodId = selectedItemId;
+
+        });
+    });
+
 }
 
 

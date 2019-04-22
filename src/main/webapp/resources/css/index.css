@@ -148,3 +148,8 @@
     margin-top: 30px;
 
 }
+
+.fa-trash:before {
+    margin-left: 10px;
+    cursor: pointer;
+}

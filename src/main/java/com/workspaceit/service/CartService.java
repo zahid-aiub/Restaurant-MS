@@ -1,7 +1,6 @@
 package com.workspaceit.service;
 import com.workspaceit.dao.CartDao;
 import com.workspaceit.entity.Cart;
-import com.workspaceit.entity.Helper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,5 +20,17 @@ public class CartService {
 
     public List<Cart> userCartDetails(int uId) {
         return this.cartDao.userCartDetails(uId);
+    }
+
+    public Integer getFoodTypeId(int foodId) {
+        return this.cartDao.getFoodTypeId(foodId);
+    }
+
+    public Integer getQuantity(int foodId) {
+        return this.cartDao.getQuantity(foodId);
+    }
+
+    public Integer removeFromCart(int foodId) {
+        return this.cartDao.removeFromCart(foodId);
     }
 }

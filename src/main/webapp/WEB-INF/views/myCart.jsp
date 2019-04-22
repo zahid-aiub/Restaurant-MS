@@ -16,6 +16,7 @@
                cellspacing="0" width="100%">
             <thead>
             <tr>
+                <th id="foodId"></th>
                 <th>Image</th>
                 <th>Name</th>
                 <th>Quantity</th>
@@ -29,6 +30,5 @@
 
 
     </div>
-    <button id="placeorder" data-toggle="modal" data-target="#paymentDiv">Place Order</button>
 
 </div>

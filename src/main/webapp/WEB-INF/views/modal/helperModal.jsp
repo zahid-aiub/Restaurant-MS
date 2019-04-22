@@ -228,6 +228,7 @@
                         <input type="text" placeholder="CVC" name="cvc"/>
                     </form>
                 </div>
+            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-info">Submit</button>
                 <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
@@ -240,21 +241,22 @@
 <%--Payment Modal end--%>
 
 <!-- .modal -->
-<div class="modal fade" id="Mymodal">
+<div class="modal fade" id="warningModdal" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Notification</h4>
-            </div>
             <div class="modal-body">
-                Are you sure you want to continue?
+                <div>
+                    <p>Are you sure remove the item?</p>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" data-dismiss="modal" class="btn btn-primary" id="remove_yes">Yes</button>
+                <button type="button" data-dismiss="modal" id="remove_no" class="btn">No</button>
             </div>
+
         </div>
     </div>
 </div>
+
 
 
