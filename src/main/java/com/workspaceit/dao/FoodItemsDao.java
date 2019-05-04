@@ -47,17 +47,18 @@ public class FoodItemsDao extends BaseDao{
         }
     }
 
-    public void updateQuantity(int updatedQuantity, int foodId) {
+    public Integer updateQuantity(int updatedQuantity, int foodId) {
         try {
             System.out.println("FoodId: "+ foodId + "Qty: "+updatedQuantity);
             String query = "update FoodItems F set F.quantity=:updatedQuantity WHERE id=:foodId";
             Session session = this.getCurrentHibernateSession();
-            session.createQuery(query)
+            return session.createQuery(query)
                     .setParameter("updatedQuantity", updatedQuantity)
                     .setParameter("foodId", foodId).executeUpdate();
         }
         catch (Exception e ) {
             e.printStackTrace();
+            return 0;
         }
     }
 }

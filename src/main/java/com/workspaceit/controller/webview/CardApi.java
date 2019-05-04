@@ -48,7 +48,7 @@ public class CardApi {
         int dbQuantity = this.foodItemsService.getQuantity(foodTypeId);
         System.out.println("Database Food quantity: "+dbQuantity);
 
-        this.foodItemsService.updateQuantity(dbQuantity-quantity, foodTypeId);
+        Integer updateRes = this.foodItemsService.updateQuantity(dbQuantity-quantity, foodTypeId);
 
         Boolean res = this.cartService.addToCart(cart);
         if (res){
@@ -87,7 +87,15 @@ public class CardApi {
         Integer isDelete = cartService.removeFromCart(foodId);
         System.out.println("Deleted"+ isDelete);
         if (isDelete==1){
-            System.out.println("Deleted");
+            System.out.println("Removed from cart");
+            Integer isUpdate =  this.foodItemsService.updateQuantity(foodTableQuantity+cartTableQuantity, foodId);
+            if (isUpdate==1) {
+                System.out.println("-------------------------------");
+                return new ApiStatus(200,"remove from cart done");
+            }
+            else {
+                return new ApiStatus(400, "failed to update food quantity after remove from cart");
+            }
         }
 
         return new ApiStatus(200,"ok");

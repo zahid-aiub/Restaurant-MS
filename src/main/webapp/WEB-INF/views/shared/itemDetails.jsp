@@ -51,7 +51,7 @@
             <hr>
 
 <%--            <button id="addToCardBtn" class="btn btn-sm btn-success">Add to Card</button>--%>
-            <a href="#" class="btn btn-success" id="addToCardBtn" <%--data-toggle="modal" data-target="#addToCardModal"--%>><span class="glyphicon glyphicon-shopping-cart"></span>Add to Card</a>
+            <a href="#" class="btn btn-success" name="addToCart" id="addToCardBtn" <%--data-toggle="modal" data-target="#addToCardModal"--%>><span class="glyphicon glyphicon-shopping-cart"></span>Add to Card</a>
             <a href="${contextRoot}/burger" class="btn btn-primary">Back</a>
 
 

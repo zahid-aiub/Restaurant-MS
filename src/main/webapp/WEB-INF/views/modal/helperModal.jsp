@@ -238,6 +238,90 @@
     </div>
 </div>
 
+
+
+
+
+
+
+<div id="addProductModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h3 class="modal-title">Add Product</h3>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="pName" class="col-lg-3 control-label">Product Name</label>
+                            <div class="col-lg-7">
+                                <input type="text" class="form-control" id="pName"><br>
+
+                            </div>
+
+                            <label for="quantity" class="col-lg-3 control-label">Quantity</label>
+                            <div class="col-lg-7">
+                                <input type="text" class="form-control" id="quantity"><br>
+
+                            </div>
+
+                            <label for="price" class="col-lg-3 control-label">Price</label>
+                            <div class="col-lg-7">
+                                <input type="text" class="form-control" id="price"><br>
+
+                            </div>
+                            <label for="status" class="col-lg-3 control-label">Status</label>
+                            <div class="col-lg-7">
+                                <input type="text" class="form-control" id="status"><br>
+
+                            </div>
+
+                            <label for="description" class="col-lg-3 control-label">Description</label>
+                            <div class="col-lg-7">
+                                <input type="text" class="form-control" id="description"><br>
+
+                            </div>
+                            <label for="category" class="col-lg-3 control-label">Category</label>
+                            <div class="col-lg-7">
+                                <select class="form-control" id="category">
+                                    <option value="meatMeal">Meat Meal</option>
+                                    <option value="burger">Burgers</option>
+                                    <option value="pizza">Pizza</option>
+                                    <option value="rice">Rice Meals</option>
+                                    <option value="snack">Snacks</option>
+                                    <option value="drink">Drinks</option>
+                                </select>
+                            </div>
+                            </br>
+                            <label for="image" class="col-lg-3 control-label">Image</label>
+                            <div class="col-lg-7">
+                                    <input type="file" class="custom-file-input" id="image"
+                                           aria-describedby="inputGroupFileAddon01">
+                                    <label class="custom-file-label" for="image">Choose file</label>
+
+                            </div>
+
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-primary" id="registrationBtn">Confirm</a>
+                <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
+            </div>
+
+        </div><!-- /.modal-content -->
+    </div>
+</div>
+
+
+
+
+
+
 <%--Payment Modal end--%>
 
 <!-- .modal -->

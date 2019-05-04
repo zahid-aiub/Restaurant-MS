@@ -3,7 +3,7 @@
 
 <div id="meatMeal-home" class="container" style="">
     <div align="center">
-        <h1>Pizza</h1>
+        <h1>Meat Meal</h1>
 
     </div>
 

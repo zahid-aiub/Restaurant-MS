@@ -3,10 +3,10 @@ $( document ).ready(function() {
 
     var food_id;
 
-    $("#signInBtn").click(function () {
-        console.log("okkkk...!!!");
-        //$("#loginModal").modal("show");
-    });
+    // $("#signInBtn").click(function () {
+    //     console.log("okkkk...!!!");
+    //     //$("#loginModal").modal("show");
+    // });
 
     $("#registration").click(function () {
         console.log("aaaaaa.....");
@@ -38,16 +38,18 @@ $( document ).ready(function() {
 
                         console.log("its work...!!");
                         window.location.replace("http://localhost:8082/");
-                        // $.growl.warning({message: "You have successfully registried!"});
+                        $.growl.notice({ message: "Login Successfull!" });
+                    }
+                    else {
+                        $.growl.error({ message: "Invalid username or poassword!" });
+                        console.log("error");
                     }
                 },
-                error: function (response) {
-                    console.log("error");
-                }
+
             });
         }
 
-        if (!username=="" && !password==""){
+        else if (!username=="" && !password=="" ){
             console.log(BASEURL);
             $.ajax({
                 method: 'POST',
@@ -62,17 +64,19 @@ $( document ).ready(function() {
 
                         console.log("its work...!!");
                         window.location.replace("http://localhost:8082/");
-                        // $.growl.warning({message: "You have successfully registried!"});
+                        $.growl.warning({message: "Logiin Successfull!"});
+                        $('#loginModal').hide();
+                    }
+                    else {
+                        $.growl.error({ message: "Invalid username or poassword!" });
+                        console.log("error1");
                     }
                 },
-                error: function (response) {
-                    console.log("error");
-                }
             });
 
         }
         else {
-            alert("Please fill up all section.")
+            $.growl.warning({ message: "Please fill up all section!" });
         }
 
     });
@@ -100,8 +104,12 @@ $( document ).ready(function() {
                 success: function (response) {
                     if(response.status == 200){
                         console.log("yes...!!");
-                        $("#registrationModal").modal("hide");
-                        // $.growl.warning({message: "You have successfully registried!"});
+                        $.growl.notice({ message: "You are registred successfully!" });
+                        //$("#registrationModal").modal("hide");
+
+                    }
+                    else {
+                        $.growl.error({ message: "Registration Failed!" });
                     }
                 }
             });
@@ -114,6 +122,11 @@ $( document ).ready(function() {
 
     $('#logout').click(function () {
         sessionStorage.removeItem('user');
+        console.log("logout");
+    });
+
+    $('#adminLogout').click(function () {
+        sessionStorage.removeItem('admin');
         console.log("logout");
     });
 
@@ -636,7 +649,7 @@ $( document ).ready(function() {
     $("#addToCardBtn").click(function () {
         console.log("add to caRD");
         if(id == 0){
-            $('#loginModal').modal('show');
+            $.growl.warning({ message: "You should login first!" });
         }
         else {
             $("#addToCardModal").modal('show');

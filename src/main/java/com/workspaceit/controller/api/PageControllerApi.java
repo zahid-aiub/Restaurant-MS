@@ -39,7 +39,7 @@ public class PageControllerApi {
         return mv;
     }
 
-    @RequestMapping(value = "/meat-meal")
+    @RequestMapping(value = "/meatmeal")
     public ModelAndView meatMealPage (){
         ModelAndView mv = new ModelAndView();
         mv.setViewName("home/index");
@@ -63,7 +63,7 @@ public class PageControllerApi {
         return mv;
     }
 
-    @RequestMapping(value = "/rice-meal")
+    @RequestMapping(value = "/ricemeal")
     public ModelAndView riceMealPage (){
         ModelAndView mv = new ModelAndView();
         mv.setViewName("home/index");

@@ -18,10 +18,10 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a id="meatMeal" href="${contextRoot}/meat-meal">MEAT MEAL<%--<span class="sr-only">(current)</span>--%></a></li>
+				<li><a id="meatMeal" href="${contextRoot}/meatmeal">MEAT MEAL<%--<span class="sr-only">(current)</span>--%></a></li>
 				<li><a id="burger" href="${contextRoot}/burger">BURGERS</a></li>
 				<li><a id="pizza" href="${contextRoot}/pizza">PIZZA</a></li>
-				<li><a id="riceMeal" href="${contextRoot}/rice-meal">RICE MEALS</a></li>
+				<li><a id="riceMeal" href="${contextRoot}/ricemeal">RICE MEALS</a></li>
 				<li><a id="snacks" href="${contextRoot}/snack">SNACKS</a></li>
 				<li><a id="drinks" href="${contextRoot}/drink">DRINKS</a></li>
 				<%--<li class="dropdown">
@@ -45,11 +45,12 @@
 				</div>
 				<a><span href="#" type="submit" class="btn btn-sm btn-default">Search</span></a>
 			</form>
+			<button id="addProduct" type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#addProductModal">Add Product</button>
 			<label id="nameSpace" ></label>
 
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#" id="signInBtn" data-toggle="modal" data-target="#loginModal" >Sign In</a></li>
-				<li><a href="#" id="offer" >Offer</a></li>
+                <li><a href="${contextRoot}/logout" id="adminLogout" >Logout</a></li>
 <%--				<span id="nameSpace" ></span>--%>
 				<li class="dropdown">
 <%--					<a href="#">--%>

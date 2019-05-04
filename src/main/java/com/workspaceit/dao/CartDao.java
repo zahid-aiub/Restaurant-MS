@@ -61,9 +61,9 @@ public class CartDao extends BaseDao{
 
     public Integer removeFromCart(int foodId) {
         try {
-            String query = "delete FROM Cart where id=:food_id";
+            String query = "delete FROM cart where id ="+foodId+"";
             Session session = this.getCurrentHibernateSession();
-            session.createNativeQuery(query).setParameter("food_id", foodId);
+            session.createNativeQuery(query).executeUpdate();
             return 1;
         }
         catch (Exception e ) {
