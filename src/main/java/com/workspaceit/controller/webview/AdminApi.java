@@ -8,13 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 
 @RestController
 @RequestMapping(value = "/admin")
 public class AdminApi {
+
+    @Autowired
+    ServletContext servletContext;
 
     @Autowired
     private AdminService adminService;
@@ -49,9 +55,28 @@ public class AdminApi {
 
 
     @RequestMapping(value = "/changeProductStatus")
-    public void changeProductStatusByAdmin (@RequestParam("status") String ststus) {
-        Integer st =Integer.parseInt(ststus);
+    public void changeProductStatusByAdmin (@RequestParam("status") String status) {
+        Integer st =Integer.parseInt(status);
         System.out.println("-------"+ st);
 
+    }
+
+    @RequestMapping(value = "/addFoodItem")
+    public Boolean addFoodItems (@RequestParam("name") String name, @RequestParam("category") String category,
+                                 @RequestParam("quantity") String quantity, @RequestParam("price") String price,
+                                 @RequestParam("status") String status, @RequestParam("description") String description,
+                                 @RequestParam("imageUrl") String file
+                                 ) {
+
+        System.out.println("--------------"+file);
+
+        String webappRoot = servletContext.getRealPath("/");
+        String uploadDir = File.separator + "resources" + File.separator
+                + "images" + File.separator + category + File.separator;
+       // String filename = webappRoot + uploadDir
+            //    + file.getOriginalFilename();
+        System.out.println("------------"+ uploadDir);
+
+        return true;
     }
 }

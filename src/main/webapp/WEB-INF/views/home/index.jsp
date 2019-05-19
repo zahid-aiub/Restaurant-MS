@@ -115,7 +115,7 @@
             $('#profile').hide();
             $('#signInBtn').hide();
             $('#adminLogout').show();
-            $('#nameSpace').text("Welcome "+name);
+            $('#nameSpace').text("Hi "+name);
             $('#nameSpace').show();
             $('#addProduct').show();
         }

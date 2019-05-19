@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class CardApi {
     private CartService cartService;
 
     @RequestMapping(value = "/confirm-add-to-cart")
-    public ApiStatus confirmAddToCard (HttpServletRequest request,
+    public ApiStatus confirmAddToCard (HttpServletRequest request, HttpServletResponse response,
                                        @RequestParam("userId") int uid,
                                        @RequestParam("foodId") int foodTypeId,
                                        @RequestParam("quantity") int quantity,
@@ -52,11 +53,9 @@ public class CardApi {
 
         Boolean res = this.cartService.addToCart(cart);
         if (res){
-            System.out.println("added");
             return new ApiStatus(200, "successfully add to cart");
         }
         else {
-            System.out.println("failed to add");
             return new ApiStatus(400,"Failed to add cart");
         }
     }

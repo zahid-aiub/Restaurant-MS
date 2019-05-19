@@ -33,7 +33,6 @@ public class CustomerDao extends BaseDao {
             return (Customer) session.createQuery(hql).setParameter("phone", uname).setParameter("pass", pass).uniqueResult();
 
         }
-
         catch (Exception e){
             e.printStackTrace();
             return null;

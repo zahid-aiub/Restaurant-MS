@@ -685,6 +685,7 @@ $( document ).ready(function() {
             success : function (response) {
                 console.log("ok...5");
                 if (response.status == 200) {
+                    console.log("response ok..!");
                     $('#addToCardModal').modal('hide');
                 }
             }
@@ -854,6 +855,44 @@ function changeProductStatus(checkboxElem) {
 function editItems(click) {
     console.log("dfcfnhgchjn");
 }
+
+$('#addItemBtn').click(function () {
+
+    var selectedCategory = $('#category').val();
+    var foodName = $('#pName').val();
+    var quantity = $('#quantity').val();
+    var price = $('#price').val();
+    var status = $('#status').val();
+    var description = $('#description').val();
+    var image = $('#image').val();
+
+    console.log(selectedCategory+"  "+price +"  "+image);
+    $.ajax({
+        method: 'POST',
+        url: "/admin/addFoodItem",
+        data: {
+            name : foodName,
+            category : selectedCategory,
+            quantity : quantity,
+            price : price,
+            status : status,
+            description : description,
+            imageUrl : image
+        },
+        success: function (response) {
+            if(response.status == 200){
+                console.log("yes Hit it...!!");
+
+            }
+        }
+    });
+
+});
+
+$('#submitBtn').click(function () {
+    $.growl.notice({ message: "Payment process is going on..!" });
+});
+
 
 function placeOrder(event) {
     console.log("place order")

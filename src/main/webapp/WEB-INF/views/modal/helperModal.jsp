@@ -230,7 +230,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-info">Submit</button>
+                <button id="submitBtn" type="button" class="btn btn-info">Submit</button>
                 <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
             </div>
 
@@ -255,6 +255,18 @@
                 <form class="form-horizontal">
                     <fieldset>
                         <div class="form-group">
+                            <label for="category" class="col-lg-3 control-label">Category</label>
+                            <div class="col-lg-7">
+                                <select class="form-control" id="category">
+                                    <option value="meatMeal">Meat Meal</option>
+                                    <option value="burger">Burgers</option>
+                                    <option value="pizza">Pizza</option>
+                                    <option value="rice">Rice Meals</option>
+                                    <option value="snack">Snacks</option>
+                                    <option value="drink">Drinks</option>
+                                </select><br>
+                            </div>
+
                             <label for="pName" class="col-lg-3 control-label">Product Name</label>
                             <div class="col-lg-7">
                                 <input type="text" class="form-control" id="pName"><br>
@@ -283,33 +295,19 @@
                                 <input type="text" class="form-control" id="description"><br>
 
                             </div>
-                            <label for="category" class="col-lg-3 control-label">Category</label>
-                            <div class="col-lg-7">
-                                <select class="form-control" id="category">
-                                    <option value="meatMeal">Meat Meal</option>
-                                    <option value="burger">Burgers</option>
-                                    <option value="pizza">Pizza</option>
-                                    <option value="rice">Rice Meals</option>
-                                    <option value="snack">Snacks</option>
-                                    <option value="drink">Drinks</option>
-                                </select>
-                            </div>
                             </br>
                             <label for="image" class="col-lg-3 control-label">Image</label>
                             <div class="col-lg-7">
                                     <input type="file" class="custom-file-input" id="image"
                                            aria-describedby="inputGroupFileAddon01">
-                                    <label class="custom-file-label" for="image">Choose file</label>
-
                             </div>
-
                         </div>
 
                     </fieldset>
                 </form>
             </div>
             <div class="modal-footer">
-                <a href="#" class="btn btn-primary" id="registrationBtn">Confirm</a>
+                <a href="#" class="btn btn-info" id="addItemBtn">Add Item</a>
                 <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
             </div>
 
