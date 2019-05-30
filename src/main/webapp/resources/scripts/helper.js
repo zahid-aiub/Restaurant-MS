@@ -1,7 +1,7 @@
 
 $( document ).ready(function() {
 
-    var food_id;
+    var checkedOrNot;
 
     // $("#signInBtn").click(function () {
     //     console.log("okkkk...!!!");
@@ -37,7 +37,7 @@ $( document ).ready(function() {
                     if(response.status == 200){
 
                         console.log("its work...!!");
-                        window.location.replace("http://localhost:8082/");
+                        location. reload(true);
                         $.growl.notice({ message: "Login Successfull!" });
                     }
                     else {
@@ -63,7 +63,7 @@ $( document ).ready(function() {
                     if(response.status == 200){
 
                         console.log("its work...!!");
-                        window.location.replace("http://localhost:8082/");
+                        location. reload(true);
                         $.growl.warning({message: "Logiin Successfull!"});
                         $('#loginModal').hide();
                     }
@@ -105,7 +105,7 @@ $( document ).ready(function() {
                     if(response.status == 200){
                         console.log("yes...!!");
                         $.growl.notice({ message: "You are registred successfully!" });
-                        //$("#registrationModal").modal("hide");
+                        $("#registrationModal").modal("hide");
 
                     }
                     else {
@@ -146,6 +146,7 @@ $( document ).ready(function() {
         ,
         "columns": [
 
+            {"data": "id"},
             {"data": "image"},
             {"data": "typeName"},
             {"data": "quantity"},
@@ -159,6 +160,13 @@ $( document ).ready(function() {
                 targets: 0,
                 "sortable":false,
                 render: function (data, type, row, meta) {
+                    return data;
+                }
+            },
+            {
+                targets: 1,
+                "sortable":false,
+                render: function (data, type, row, meta) {
                     if (data!= null){
                         console.log(data);
                         return '<img src="/resources/images/'+data+'" alt="MeatMeal" class="img img-responsive" id="dataTableImg">';
@@ -167,7 +175,7 @@ $( document ).ready(function() {
                 }
             },
             {
-                targets: 2,
+                targets: 3,
                 "sortable":false,
                 render: function (data, type, row, meta) {
                     if (data!= null){
@@ -177,7 +185,7 @@ $( document ).ready(function() {
                 }
             },
             {
-                targets: [3],
+                targets: [4],
                 render: function (data, type, row, meta) {
                     if (data!= null){
                         return '<span class="badge badge-secondary">'+data+' tk</span>';
@@ -188,7 +196,7 @@ $( document ).ready(function() {
                 }
             },
             {
-                targets: [4],
+                targets: [5],
                 render: function (data, type, row, meta) {
                     if (id < 0) {
                         return "";
@@ -200,11 +208,11 @@ $( document ).ready(function() {
                 }
             },
             {
-                targets: [5],
+                targets: [6],
                 render: function (data, type, row, meta) {
                     if (id < 0) {
                         return '<input id="productStatus" type="checkbox" onchange="changeProductStatus(this)" checked data-toggle="toggle" data-style="ios"> ' +
-                            '<a id="editBtn" onclick="editItems(this)"> <span class="glyphicon glyphicon-cog"></span> </a>';
+                            '<a data-toggle="modal" data-target="#updateProductModal" id="editBtn" onclick="editItems(this)"> <span class="glyphicon glyphicon-cog"></span> </a>';
                     }
                     else {
                         return "";
@@ -214,12 +222,10 @@ $( document ).ready(function() {
 
         ]
     });
+    meatMealTable.column(0).visible(false);
 
 
-
-    //For burger item
-
-    var table = $("#burgerDataTable").DataTable({
+    var burgerTable = $("#burgerDataTable").DataTable({
 
         "processing": false,
         "searching":true,
@@ -233,6 +239,7 @@ $( document ).ready(function() {
         ,
         "columns": [
 
+            {"data": "id"},
             {"data": "image"},
             {"data": "typeName"},
             {"data": "quantity"},
@@ -246,6 +253,13 @@ $( document ).ready(function() {
                 targets: 0,
                 "sortable":false,
                 render: function (data, type, row, meta) {
+                    return data;
+                }
+            },
+            {
+                targets: 1,
+                "sortable":false,
+                render: function (data, type, row, meta) {
                     if (data!= null){
                         console.log(data);
                         return '<img src="/resources/images/'+data+'" alt="Bugrer" class="img img-responsive" id="dataTableImg">';
@@ -254,7 +268,7 @@ $( document ).ready(function() {
                 }
             },
             {
-                targets: 2,
+                targets: 3,
                 "sortable":false,
                 render: function (data, type, row, meta) {
                     if (data!= null){
@@ -264,7 +278,7 @@ $( document ).ready(function() {
                 }
             },
             {
-                targets: [3],
+                targets: [4],
                 render: function (data, type, row, meta) {
                     if (data!= null){
                         return '<span class="badge badge-secondary">'+data+' tk</span>';
@@ -275,7 +289,7 @@ $( document ).ready(function() {
                 }
             },
             {
-                targets: [4],
+                targets: [5],
                 render: function (data, type, row, meta) {
                     if (id < 0) {
                         return "";
@@ -287,11 +301,11 @@ $( document ).ready(function() {
                 }
             },
             {
-                targets: [5],
+                targets: [6],
                 render: function (data, type, row, meta) {
                     if (id < 0) {
                         return '<input id="productStatus" type="checkbox" onchange="changeProductStatus(this)" checked data-toggle="toggle" data-style="ios"> ' +
-                            '<a id="editBtn" onclick="editItems(this)"> <span class="glyphicon glyphicon-cog"></span> </a>';
+                            '<a data-toggle="modal" data-target="#updateProductModal" id="editBtn" onclick="editItems(this)"> <span class="glyphicon glyphicon-cog"></span> </a>';
                     }
                     else {
                         return "";
@@ -301,6 +315,7 @@ $( document ).ready(function() {
 
         ]
     });
+    burgerTable.column(0).visible(false);
 
 
     var pizzaTable = $("#pizzaDataTable").DataTable({
@@ -317,6 +332,7 @@ $( document ).ready(function() {
         ,
         "columns": [
 
+            {"data": "id"},
             {"data": "image"},
             {"data": "typeName"},
             {"data": "quantity"},
@@ -330,6 +346,13 @@ $( document ).ready(function() {
                 targets: 0,
                 "sortable":false,
                 render: function (data, type, row, meta) {
+                    return data;
+                }
+            },
+            {
+                targets: 1,
+                "sortable":false,
+                render: function (data, type, row, meta) {
                     if (data!= null){
                         console.log(data);
                         return '<img src="/resources/images/'+data+'" alt="Pizza" class="img img-responsive" id="dataTableImg">';
@@ -338,7 +361,7 @@ $( document ).ready(function() {
                 }
             },
             {
-                targets: 2,
+                targets: 3,
                 "sortable":false,
                 render: function (data, type, row, meta) {
                     if (data!= null){
@@ -348,7 +371,7 @@ $( document ).ready(function() {
                 }
             },
             {
-                targets: [3],
+                targets: [4],
                 render: function (data, type, row, meta) {
                     if (data!= null){
                         return '<span class="badge badge-secondary">'+data+' tk</span>';
@@ -359,7 +382,7 @@ $( document ).ready(function() {
                 }
             },
             {
-                targets: [4],
+                targets: [5],
                 render: function (data, type, row, meta) {
                     if (id < 0) {
                         return "";
@@ -371,11 +394,11 @@ $( document ).ready(function() {
                 }
             },
             {
-                targets: [5],
+                targets: [6],
                 render: function (data, type, row, meta) {
                     if (id < 0) {
                         return '<input id="productStatus" type="checkbox" onchange="changeProductStatus(this)" checked data-toggle="toggle" data-style="ios"> ' +
-                            '<a id="editBtn" onclick="editItems(this)"> <span class="glyphicon glyphicon-cog"></span> </a>';
+                            '<a data-toggle="modal" data-target="#updateProductModal" id="editBtn" onclick="editItems(this)"> <span class="glyphicon glyphicon-cog"></span> </a>';
                     }
                     else {
                         return "";
@@ -385,6 +408,7 @@ $( document ).ready(function() {
 
         ]
     });
+    pizzaTable.column(0).visible(false);
 
     var riceMeal = $("#riceMealDataTable").DataTable({
 
@@ -400,6 +424,7 @@ $( document ).ready(function() {
         ,
         "columns": [
 
+            {"data": "id"},
             {"data": "image"},
             {"data": "typeName"},
             {"data": "quantity"},
@@ -413,6 +438,13 @@ $( document ).ready(function() {
                 targets: 0,
                 "sortable":false,
                 render: function (data, type, row, meta) {
+                    return data;
+                }
+            },
+            {
+                targets: 1,
+                "sortable":false,
+                render: function (data, type, row, meta) {
                     if (data!= null){
                         console.log(data);
                         return '<img src="/resources/images/'+data+'" alt="RiceMeal" class="img img-responsive" id="dataTableImg">';
@@ -421,7 +453,7 @@ $( document ).ready(function() {
                 }
             },
             {
-                targets: 2,
+                targets: 3,
                 "sortable":false,
                 render: function (data, type, row, meta) {
                     if (data!= null){
@@ -431,7 +463,7 @@ $( document ).ready(function() {
                 }
             },
             {
-                targets: [3],
+                targets: [4],
                 render: function (data, type, row, meta) {
                     if (data!= null){
                         return '<span class="badge badge-secondary">'+data+' tk</span>';
@@ -442,7 +474,7 @@ $( document ).ready(function() {
                 }
             },
             {
-                targets: [4],
+                targets: [5],
                 render: function (data, type, row, meta) {
                     if (id < 0) {
                         return "";
@@ -454,11 +486,11 @@ $( document ).ready(function() {
                 }
             },
             {
-                targets: [5],
+                targets: [6],
                 render: function (data, type, row, meta) {
                     if (id < 0) {
                         return '<input id="productStatus" type="checkbox" onchange="changeProductStatus(this)" checked data-toggle="toggle" data-style="ios"> ' +
-                            '<a id="editBtn" onclick="editItems(this)"> <span class="glyphicon glyphicon-cog"></span> </a>';
+                            '<a data-toggle="modal" data-target="#updateProductModal" id="editBtn" onclick="editItems(this)"> <span class="glyphicon glyphicon-cog"></span> </a>';
                     }
                     else {
                         return "";
@@ -468,6 +500,7 @@ $( document ).ready(function() {
 
         ]
     });
+    riceMeal.column(0).visible(false);
 
     var snacksTable = $("#snacksDataTable").DataTable({
 
@@ -482,7 +515,7 @@ $( document ).ready(function() {
         }
         ,
         "columns": [
-
+            {"data": "id"},
             {"data": "image"},
             {"data": "typeName"},
             {"data": "quantity"},
@@ -496,6 +529,13 @@ $( document ).ready(function() {
                 targets: 0,
                 "sortable":false,
                 render: function (data, type, row, meta) {
+                    return data;
+                }
+            },
+            {
+                targets: 1,
+                "sortable":false,
+                render: function (data, type, row, meta) {
                     if (data!= null){
                         console.log(data);
                         return '<img src="/resources/images/'+data+'" alt="Pizza" class="img img-responsive" id="dataTableImg">';
@@ -504,7 +544,7 @@ $( document ).ready(function() {
                 }
             },
             {
-                targets: 2,
+                targets: 3,
                 "sortable":false,
                 render: function (data, type, row, meta) {
                     if (data!= null){
@@ -514,7 +554,7 @@ $( document ).ready(function() {
                 }
             },
             {
-                targets: [3],
+                targets: [4],
                 render: function (data, type, row, meta) {
                     if (data!= null){
                         return '<span class="badge badge-secondary">'+data+' tk</span>';
@@ -525,7 +565,7 @@ $( document ).ready(function() {
                 }
             },
             {
-                targets: [4],
+                targets: [5],
                 render: function (data, type, row, meta) {
                     if (id < 0) {
                         return "";
@@ -537,11 +577,11 @@ $( document ).ready(function() {
                 }
             },
             {
-                targets: [5],
+                targets: [6],
                 render: function (data, type, row, meta) {
                     if (id < 0) {
                         return '<input id="productStatus" type="checkbox" onchange="changeProductStatus(this)" checked data-toggle="toggle" data-style="ios"> ' +
-                            '<a id="editBtn" onclick="editItems(this)"> <span class="glyphicon glyphicon-cog"></span> </a>';
+                            '<a data-toggle="modal" data-target="#updateProductModal" id="editBtn" onclick="editItems(this)"> <span class="glyphicon glyphicon-cog"></span> </a>';
                     }
                     else {
                         return "";
@@ -551,6 +591,8 @@ $( document ).ready(function() {
 
         ]
     });
+
+    snacksTable.column(0).visible(false);
 
 
     var drinks = $("#drinkDataTable").DataTable({
@@ -566,7 +608,7 @@ $( document ).ready(function() {
         }
         ,
         "columns": [
-
+            {"data": "id"},
             {"data": "image"},
             {"data": "typeName"},
             {"data": "quantity"},
@@ -582,13 +624,24 @@ $( document ).ready(function() {
                 render: function (data, type, row, meta) {
                     if (data!= null){
                         console.log(data);
+                        return data;
+                    }
+                    return "N/A";
+                }
+            },
+            {
+                targets: 1,
+                "sortable":false,
+                render: function (data, type, row, meta) {
+                    if (data!= null){
+                        console.log(data);
                         return '<img src="/resources/images/'+data+'" alt="drink" class="img img-responsive" id="dataTableImg">';
                     }
                     return "N/A";
                 }
             },
             {
-                targets: 2,
+                targets: 3,
                 "sortable":false,
                 render: function (data, type, row, meta) {
                     if (data!= null){
@@ -598,7 +651,7 @@ $( document ).ready(function() {
                 }
             },
             {
-                targets: [3],
+                targets: [4],
                 render: function (data, type, row, meta) {
                     if (data!= null){
                         return '<span class="badge badge-secondary">'+data+' tk</span>';
@@ -609,7 +662,7 @@ $( document ).ready(function() {
                 }
             },
             {
-                targets: [4],
+                targets: [5],
                 render: function (data, type, row, meta) {
                     if (id < 0) {
                         return "";
@@ -622,11 +675,11 @@ $( document ).ready(function() {
                 }
             },
             {
-                targets: [5],
+                targets: [6],
                 render: function (data, type, row, meta) {
                     if (id < 0) {
                         return '<input id="productStatus" type="checkbox" onchange="changeProductStatus(this)" checked data-toggle="toggle" data-style="ios"> ' +
-                            '<a id="editBtn" onclick="editItems(this)"> <span class="glyphicon glyphicon-cog"></span> </a>';
+                            '<a data-toggle="modal" data-target="#updateProductModal" id="editBtn" onclick="editItems(this)"> <span class="glyphicon glyphicon-cog"></span> </a>';
                     }
                     else {
                         return "";
@@ -636,6 +689,38 @@ $( document ).ready(function() {
 
         ]
     });
+    drinks.column(0).visible(false);
+
+    $('#meatMealDataTable tbody').on( 'click', 'tr', function () {
+        console.log( meatMealTable.row( this ).data().id );
+        selectedFoodItemId = meatMealTable.row( this ).data().id;
+    } );
+
+    $('#burgerDataTable tbody').on( 'click', 'tr', function () {
+        console.log( burgerTable.row( this ).data().id );
+        selectedFoodItemId = burgerTable.row( this ).data().id;
+    } );
+
+    $('#pizzaDataTable tbody').on( 'click', 'tr', function () {
+        console.log( pizzaTable.row( this ).data().id );
+        selectedFoodItemId = pizzaTable.row( this ).data().id;
+    } );
+
+    $('#riceMealDataTable tbody').on( 'click', 'tr', function () {
+        console.log( riceMeal.row( this ).data().id );
+        selectedFoodItemId = riceMeal.row( this ).data().id;
+    } );
+
+    $('#snacksDataTable tbody').on( 'click', 'tr', function () {
+        console.log( snacksTable.row( this ).data().id );
+        selectedFoodItemId = snacksTable.row( this ).data().id;
+    } );
+
+    $('#drinkDataTable tbody').on( 'click', 'tr', function () {
+        console.log( drinks.row( this ).data().id );
+        selectedFoodItemId = drinks.row( this ).data().id;
+    } );
+
 
 
 
@@ -670,6 +755,8 @@ $( document ).ready(function() {
 
         console.log("C_id: "+ id+"---"+quantity+"------"+name+"----"+foodTypeId+"---"+ image);
         $('#addToCardModal').modal('hide');
+        $.growl.notice({ message: "Successfully added to your cart" });
+        location. reload(true);
         $.ajax({
             method: 'POST',
             url: "/cart/confirm-add-to-cart",
@@ -686,7 +773,8 @@ $( document ).ready(function() {
                 console.log("ok...5");
                 if (response.status == 200) {
                     console.log("response ok..!");
-                    $('#addToCardModal').modal('hide');
+
+                    // $('#addToCardModal').modal('hide');
                 }
             }
 
@@ -793,6 +881,7 @@ $( document ).ready(function() {
         var foodId = selectedFoodId;
 
         console.log(id+"----"+ foodId);
+        location. reload(true)
 
         $.ajax({
             method: 'POST',
@@ -814,47 +903,6 @@ $( document ).ready(function() {
 
 });
 
-function changeProductStatus(checkboxElem) {
-    if (checkboxElem.checked) {
-        console.log("checked");
-        $.ajax({
-            method: 'POST',
-            url: "/admin/changeProductStatus",
-            data: {
-                status: 1
-            },
-            success: function (response) {
-                if(response.status == 200){
-                    console.log("yes...updated...!!");
-
-                }
-            }
-        });
-
-    } else {
-        console.log("un-checked");
-        $.ajax({
-            method: 'POST',
-            url: "/admin/changeProductStatus",
-            data: {
-                status: 0
-            },
-            success: function (response) {
-                if(response.status == 200){
-                    console.log("yes...updated...!!");
-
-                }
-            }
-        });
-
-    }
-
-}
-
-//----edit items
-function editItems(click) {
-    console.log("dfcfnhgchjn");
-}
 
 $('#addItemBtn').click(function () {
 
@@ -907,7 +955,7 @@ function test(){
     } );
     return false;
 }
-var selectedFoodId;
+
 
 function deleteItem() {
 
@@ -921,5 +969,100 @@ function deleteItem() {
     });
 
 }
+
+var selectedFoodItemId;
+function changeProductStatus(checkboxElem) {
+    var select = selectedFoodItemId;
+    console.log("-----*****"+ selectedFoodItemId);
+    if (checkboxElem.checked) {
+        var foodTypeId = $('#foodTypeId').text();
+        console.log("----------------"+ foodTypeId);
+        $.ajax({
+            method: 'POST',
+            url: "/admin/changeProductStatus",
+            data: {
+                status: 1,
+                foodId: select
+            },
+            success: function (response) {
+                console.log("checked");
+            }
+        });
+
+    } else {
+        var select = selectedFoodItemId;
+        $.ajax({
+            method: 'POST',
+            url: "/admin/changeProductStatus",
+            data: {
+                status: 0,
+                foodId: select
+            },
+            success: function (response) {
+                console.log("un-checked");
+            }
+        });
+
+    }
+
+}
+
+//----edit items
+function editItems(click) {
+    var selectId = selectedFoodItemId;
+    console.log("In Fetch "+ selectId);
+    $.ajax({
+        method: 'POST',
+        url: "/admin/fetchProductById",
+        data: {
+            foodId : selectId,
+        },
+        success: function (response) {
+            var datas = response.data;
+            console.log(datas);
+            var id = datas.id;
+            var name = datas.typeName;
+            var qnty = datas.quantity;
+            var price = datas.price;
+            var descrp = datas.desc;
+
+            $('#nameUp').val(name);
+            $('#qnty').val(qnty);
+            $('#pric').val(price);
+            $('#desc').val(descrp);
+            $('#foodUpid').val(id);
+
+        }
+    });
+
+}
+
+$("#updateItemBtn").click(function () {
+    var id = $('#foodUpid').val();
+    var quantity = $('#qnty').val();
+    var price = $('#pric').val();
+    var desc = $('#desc').val();
+
+    console.log("----------------"+id);
+
+    $.ajax({
+        method: 'POST',
+        url: "/admin/updateBatchProduct",
+        data: {
+            foodId : id,
+            quantity : quantity,
+            price : price,
+            desc : desc
+        },
+        success: function (response) {
+            $.growl.notice({ message: "Product Updated Succfully" });
+            location. reload(true);
+        }
+    });
+
+})
+
+
+
 
 

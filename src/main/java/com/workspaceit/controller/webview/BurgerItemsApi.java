@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -20,10 +21,18 @@ public class BurgerItemsApi {
 
     @ResponseBody
     @RequestMapping(value = "/burger-item-list")
-    public List<FoodItems> burgerItems () {
+    public List<FoodItems> burgerItems (HttpServletRequest request) {
+        String userType = "";
+        HttpSession session = request.getSession();
+        if (session.getAttribute("user") != null){
+            userType = "customer";
+        }
+        if (session.getAttribute("admin")!= null){
+            userType = "admin";
+        }
 
         String category = "Burger";
-        List<FoodItems> foodItems = this.foodItemsService.getAllByCategory(category);
+        List<FoodItems> foodItems = this.foodItemsService.getAllByCategory(category, userType);
         return foodItems;
     }
 }

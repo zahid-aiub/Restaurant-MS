@@ -103,7 +103,7 @@
     <script type="text/javascript">
         var id = '<%=id%>';
         var name= '<%=name%>';
-        console.log("Id: "+ id +"---"+"Login user: "+ name);
+        console.log("Id: "+ id +" --- Login user: "+ name);
         if (id >0) {
             $('#nameSpace').text("Welcome "+name);
             $('#profile').show();

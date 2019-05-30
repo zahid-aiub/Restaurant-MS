@@ -16,6 +16,8 @@ import javax.servlet.http.HttpSession;
 @RequestMapping(value = "/user")
 public class CustomerApi {
 
+//    public String currentLogin="";
+
     @Autowired
     CustomerService customerService;
 

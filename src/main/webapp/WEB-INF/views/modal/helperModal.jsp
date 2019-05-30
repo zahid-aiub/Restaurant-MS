@@ -117,7 +117,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                <h3 class="modal-title">Add to Card</h3>
+                <h3 class="modal-title">Add to Cart</h3>
             </div>
             <div class="modal-body">
                 <table class="table table-borderless" id="addToCardTable">
@@ -316,6 +316,52 @@
 </div>
 
 
+<div id="updateProductModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h3 class="modal-title">Update Product</h3>
+            </div>
+            <div class="modal-body">
+                <input hidden="hidden" type="text" id="foodUpid"><br>
+                <form class="form-horizontal">
+                    <fieldset>
+                        <div class="form-group">
+
+                            <label for="name" class="col-lg-3 control-label">Name</label>
+                            <div class="col-lg-7">
+                                <input disabled type="text" class="form-control" id="nameUp"><br>
+
+                            </div>
+                            <label for="quantity" class="col-lg-3 control-label">Quantity</label>
+                            <div class="col-lg-7">
+                                <input type="text" class="form-control" id="qnty"><br>
+
+                            </div>
+                            <label for="price" class="col-lg-3 control-label">Price</label>
+                            <div class="col-lg-7">
+                                <input type="text" class="form-control" id="pric" value="200"><br>
+
+                            </div>
+                            <label for="description" class="col-lg-3 control-label">Description</label>
+                            <div class="col-lg-7">
+                                <input type="text" class="form-control" id="desc"><br>
+
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-info" id="updateItemBtn">Update</a>
+                <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
+            </div>
+
+        </div><!-- /.modal-content -->
+    </div>
+</div>
 
 
 

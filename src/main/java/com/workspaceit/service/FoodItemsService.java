@@ -15,8 +15,8 @@ public class FoodItemsService {
     @Autowired
     private FoodItemsDao foodItemsDao;
 
-    public List<FoodItems> getAllByCategory(String category) {
-        return this.foodItemsDao.getAllByCategory(category);
+    public List<FoodItems> getAllByCategory(String category, String userType) {
+        return this.foodItemsDao.getAllByCategory(category, userType);
     }
 
     public FoodItems getItemByid(int id) {
@@ -29,5 +29,17 @@ public class FoodItemsService {
 
     public Integer updateQuantity(int updatedQuantity, int foodId) {
         return this.foodItemsDao.updateQuantity(updatedQuantity, foodId);
+    }
+
+    public Integer updateStatus (int status, int foodId) {
+        return this.foodItemsDao.updateStatus(status, foodId);
+    }
+
+    public FoodItems fetchProductById ( int foodId) {
+        return this.foodItemsDao.fetchProductById(foodId);
+    }
+
+    public Integer updateBatch(Integer foodId, Integer qnty, Integer price, String desc) {
+        return this.foodItemsDao.batchUpdate(foodId, qnty, price, desc);
     }
 }

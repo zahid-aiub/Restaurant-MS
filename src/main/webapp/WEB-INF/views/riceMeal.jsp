@@ -16,6 +16,7 @@
                cellspacing="0" width="100%">
             <thead>
             <tr>
+                <th></th>
                 <th>Image</th>
                 <th>Name</th>
                 <th>Quantity Available</th>
@@ -26,6 +27,7 @@
             </thead>
             <tfoot>
             <tr>
+                <th></th>
                 <th>Image</th>
                 <th>Name</th>
                 <th>Quantity Available</th>
